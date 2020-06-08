@@ -1,0 +1,9 @@
+awscli
+boto3
+boto
+pyyaml
+django
+djangorestframework
+django-filter
+pysqlite3
+setuptools
