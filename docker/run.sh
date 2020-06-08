@@ -1,58 +1,88 @@
 #!/bin/bash
 
+# Change variables below if you need
+##############################
 NAME="awstest"
 VOLUME="${PWD}/volume"
 DOCKERHUBUSER="tuimac"
+IMAGE=${DOCKERHUBUSER}/${NAME}
+##############################
 
-function deleteAll(){
-    docker stop ${NAME}
-    docker rm ${NAME}
-    docker rmi ${NAME}
+function runContainer(){
+    docker run -itd --name ${NAME} \
+                -h ${NAME} \
+                -v "${VOLUME}:/tmp" \
+                -v "/etc/localtime:/etc/localtime:ro" \
+                -p "8080:8000" \
+                ${IMAGE} /bin/bash
+}
+
+function cleanup(){
     docker image prune -f
-    rm -rf ${VOLUME}
+    docker container prune -f
 }
 
 function createContainer(){
     mkdir ${VOLUME}
-    docker build -t ${DOCKERHUBUSER}/${NAME} .
-    docker run -itd --name ${NAME} \
-                -v "/var/run/docker.sock:/var/run/docker.sock" \
-                -v "/usr/bin/docker:/usr/bin/docker" \
-                -v "${VOLUME}:/tmp" \
-                ${NAME} /bin/bash
+    docker build -t ${IMAGE} .
+    runContainer
+    cleanup
+}
+
+function rerunContainer(){
+    docker stop ${NAME}
+    docker rm ${NAME}
+    runContainer
+    cleanup
+}
+
+function deleteAll(){
+    docker stop ${NAME}
+    docker rm ${NAME}
+    docker rmi ${IMAGE}
+    cleanup
+    rm -rf ${VOLUME}
 }
 
 function commitImage(){
     docker stop ${NAME}
-    docker commit ${NAME} ${DOCKERHUBUSER}/${NAME}
-    cat password.txt | base64 -d | docker login --username ${DOCKERHUBUSER} --password-stdin
-    if [ $? -ne 0 ]; then
-        docker login --username ${DOCKERHUBUSER}
-    fi
-    docker push ${DOCKERHUBUSER}/${NAME}
+    docker commit ${NAME} ${IMAGE}
     docker start ${NAME}
 }
 
+function pushImage(){
+    docker push ${NAME}
+    if [ $? -ne 0 ]; then
+        cat .password.txt | base64 -d | docker login --username ${DOCKERHUBUSER} --password-stdin
+        if [ $? -ne 0 ]; then
+            docker login --username ${DOCKERHUBUSER}
+        fi
+        docker push ${IMAGE}
+    fi
+}
+
 function registerSecret(){
-	if [ -e password.txt ]; then
-        echo -en "There is 'password.txt' file in your current directory."
+    local secretFile=".password.txt"
+    if [ -e $secretFile ]; then
+        echo -en "There is '.password.txt' file in your current directory."
         echo -en "Continue this? [y/n]: "
         read answer
         if [ $answer == "n" ]; then
             echo "Registering password is skipped."
             exit 0
-        elif [ $answer == "y" ];then
-            echo
+        elif [ $answer == "y" ]; then
+            echo "" > /dev/null
         else
             echo "Only type in 'y' or 'n'."
             exit 1
         fi
-	fi
-	echo -en "Password: "
-	read -s password
-	echo
-	echo $password | base64 > password.txt
-	cat password.txt | base64 -d
+    fi
+    echo -en "Password: "
+    read -s password
+    echo
+    chmod 600 ${secretFile}
+    echo $password | base64 > ${secretFile}
+    chmod 400 ${secretFile}
 }
 
 function userguide(){
@@ -60,8 +90,10 @@ function userguide(){
     echo -e "
 optional arguments:
 create              Create image and container after that run the container.
+rerun               Delete only container and rerun container with new settings.
 delete              Delete image and container.
 commit              Create image from target container and push the image to remote repository.
+push                Push image you create to Docker Hub.
 register-secret     Create password.txt for make it login process within 'commit' operation.
     "
 }
@@ -70,10 +102,14 @@ function main(){
     [[ -z $1 ]] && { userguide; exit 1; }
     if [ $1 == "create" ]; then
         createContainer
+    elif [ $1 == "rerun" ]; then
+        rerunContainer
     elif [ $1 == "delete" ]; then
         deleteAll
     elif [ $1 == "commit" ]; then
         commitImage
+    elif [ $1 == "push" ]; then
+        pushImage
     elif [ $1 == "help" ]; then
         userguide
     elif [ $1 == "register-secret" ]; then
