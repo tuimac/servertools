@@ -21,4 +21,5 @@ RUN yum update -y && \
     git clone https://github.com/tuimac/awstest.git
 
 ADD env/add_remote_repo /root/$pjtname/add_remote_repo
-CMD ["python3", "awstest/awstest/manage.py", "runserver", "0.0.0.0:8000"]
+WORKDIR /root/$pjtname
+CMD ["python3", "awstest/manage.py", "runserver", "0.0.0.0:8000"]
