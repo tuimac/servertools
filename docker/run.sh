@@ -13,7 +13,7 @@ function runContainer(){
                 -h ${NAME} \
                 -v "${VOLUME}:/tmp" \
                 -v "/etc/localtime:/etc/localtime:ro" \
-                -p "8080:8000" \
+                -p "8000:8000" \
                 --network="bridge" \
                 ${NAME} /bin/bash
 }
@@ -40,14 +40,14 @@ function rerunContainer(){
 function deleteAll(){
     docker stop ${NAME}
     docker rm ${NAME}
-    docker rmi ${IMAGE}
+    docker rmi ${NAME}
     cleanup
     rm -rf ${VOLUME}
 }
 
 function commitImage(){
     docker stop ${NAME}
-    docker commit ${NAME} ${IMAGE}
+    docker commit ${NAME} ${NAME}
     docker start ${NAME}
 }
 
