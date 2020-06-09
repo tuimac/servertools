@@ -17,4 +17,7 @@ RUN yum update -y && \
     pip3 install -r requirements.txt && \
     mkdir -p /etc/vim/undo && \
     mkdir -p /etc/vim/backup && \
-    rm -rf anaconda-ks.cfg anaconda-post.log original-ks.cfg requirements.txt
+    rm -rf anaconda-ks.cfg anaconda-post.log original-ks.cfg requirements.txt && \
+    git clone https://github.com/tuimac/awstest.git
+
+ADD env/add_remote_repo /root/awstest/add_remote_repo
