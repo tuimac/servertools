@@ -1,1 +1,2 @@
-./add_remote_repo
+add_remote_repo
+!docker/env/add_remote_repo
