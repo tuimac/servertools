@@ -14,7 +14,7 @@ function runContainer(){
                 -v "${VOLUME}:/tmp" \
                 -v "/etc/localtime:/etc/localtime:ro" \
                 -p "8080:8000" \
-                --network="host" \
+                --network="bridge" \
                 ${IMAGE} /bin/bash
 }
 

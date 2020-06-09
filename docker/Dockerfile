@@ -12,7 +12,7 @@ ADD env/centos/vim.sh /etc/profile.d/vim.sh
 ADD requirements.txt /root/requirements.txt
 
 RUN yum update -y && \
-    yum install -y iproute curl unzip git tree vim* && \
+    yum install -y iproute curl unzip tcpdmup iputils-ping net-tools git tree vim* && \
     dnf install -y python3 && \
     pip3 install -r requirements.txt && \
     mkdir -p /etc/vim/undo && \
