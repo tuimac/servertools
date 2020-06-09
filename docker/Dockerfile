@@ -3,7 +3,7 @@ FROM centos:latest
 ARG pjtname=awstest
 
 WORKDIR /root
-EXPOSE 8080
+EXPOSE 8000
 
 ADD env/vimrc /etc/vimrc
 ADD env/bashrc /root/.bashrc
@@ -20,4 +20,6 @@ RUN yum update -y && \
     rm -rf anaconda-ks.cfg anaconda-post.log original-ks.cfg requirements.txt && \
     git clone https://github.com/tuimac/awstest.git
 
-ADD env/add_remote_repo /root/awstest/add_remote_repo
+ADD env/add_remote_repo /root/$pjtname/add_remote_repo
+WORKDIR /root/$pjtname/$pjtname
+ENTRYPOINT ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
