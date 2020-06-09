@@ -15,7 +15,7 @@ function runContainer(){
                 -v "/etc/localtime:/etc/localtime:ro" \
                 -p "8080:8000" \
                 --network="bridge" \
-                ${IMAGE} /bin/bash
+                ${NAME} /bin/bash
 }
 
 function cleanup(){
@@ -25,7 +25,7 @@ function cleanup(){
 
 function createContainer(){
     mkdir ${VOLUME}
-    docker build -t ${IMAGE} .
+    docker build -t ${NAME} .
     runContainer
     cleanup
 }
@@ -58,7 +58,7 @@ function pushImage(){
         if [ $? -ne 0 ]; then
             docker login --username ${DOCKERHUBUSER}
         fi
-        docker push ${IMAGE}
+        docker push ${NAME}
     fi
 }
 
