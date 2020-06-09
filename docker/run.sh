@@ -15,7 +15,7 @@ function runContainer(){
                 -v "/etc/localtime:/etc/localtime:ro" \
                 -p "8000:8000" \
                 --network="bridge" \
-                ${NAME} /bin/bash
+                ${NAME}
 }
 
 function cleanup(){
