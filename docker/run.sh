@@ -31,6 +31,11 @@ function createContainer(){
 }
 
 function rerunContainer(){
+    echo -en "Do you want to commit image? [y(default)/n]: "
+    read answer
+    if [ "$answer" != "n" ]; then
+        commitImage
+    fi
     docker stop ${NAME}
     docker rm ${NAME}
     runContainer
