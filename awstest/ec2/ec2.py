@@ -11,11 +11,13 @@ class EC2:
         }
         self.response = dict()
 
-    def __queryAll(self):
-        pass
+    def __queryAll(self) -> dict:
+        for target in self.path.keys():
+            self.query(target)
+        return self.response
 
-    def query(self, target="all"):
-        if target == "all": return __queryAll()
+    def query(self, target="") -> dict:
+        if target == "": return self.__queryAll()
         try:
             url = self.baseurl + self.path[target]
             response = urllib.request.Request(url)
@@ -28,9 +30,12 @@ class EC2:
                     self.response[target] = body
                     return self.response
         except KeyError as e:
-            return "Target Error"
+            self.response["Error"] = "Query Error"
+            return self.response
         except urllib.error.HTTPError as e:
-            return "404 Not Found"
+            self.response["Error"] = "404 Not Found"
+            return self.response
         except:
             traceback.print_exc()
-            return "Error"
+            self.response["Error"] = "General Error"
+            return self.response
