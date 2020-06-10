@@ -7,8 +7,18 @@
     <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
   </head>
   <body>
-    <h1>AWS test</h1>
-		<script src="{% static "js/jquery-3.5.1.js" %}"></script>
-		<script src="{% static "js/bootstrap.min.js" %}"></script>
-	</body>
+    <h1>AWS test</h1><br>
+    <button id="getbutton">Get Info</button><br>
+    <script type="text/javascript">
+      function print(data, starttag, endtag){
+        var button = document.getElementById("button");
+        output = starttag + data + endtag
+        button.insertAdjacentHTML('afterend', output);
+        button.insertAdjacentHTML("afterend", "<h3>Result</h3>")
+      }
+
+    </script>
+    <script src="{% static "js/jquery-3.5.1.js" %}"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+  </body>
 </html>

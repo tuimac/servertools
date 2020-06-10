@@ -4,4 +4,5 @@ from ec2 import EC2
 
 class EC2APIViews(views.APIView):
     def get(self, request, *args, **kwargs):
-        response = dict()
+        response = ec2.query()
+        return Response(response)
