@@ -12,5 +12,4 @@ class EC2APIViews(views.APIView):
             response = ec2.query()
             return Response(response)
         except:
-            message = "".join(traceback.format_list())
-            logger.debug(message)
+            logger.error("".join(traceback.format_list()))

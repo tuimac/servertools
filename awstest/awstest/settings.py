@@ -140,15 +140,17 @@ LOGGING = {
     },
     'handlers': {
         'file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
+            'level': 'ERROR',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'maxBytes': 50000,
+            'formatter': 'file',
             'filename': '/root/awstest/awstest/awstest/django.log'
         },
     },
     'loggers': {
         'django': {
             'handlers': ['file'],
-            'level': DEBUG,
+            'level': 'ERROR',
             'propagate': True,
         },
     },
