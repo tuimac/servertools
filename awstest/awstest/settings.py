@@ -132,31 +132,15 @@ STATICFILES_DIRS = [
 
 LOGGING = {
     'version': 1,
-    'disable_existing_loggers': False,
     'formatters': {
         'file': {
-            'format': '%(asctime)s - %(levelname)s\n%(message)s'
+            'format': '\n'.join([
+                '%(asctime)s - %(levelname)s',
+                '%(message)s',
+            ])
         }
     },
     'handlers': {
-        'error_rotate': {
-            'level': 'ERROR',
-            'class': 'logging.handlers.RotatingFileHandler',
-            'maxBytes': 50000,
-            'filename': '/root/awstest/awstest/logs/error_django.log'
-        },
-        'debug_rotate': {
-            'level': 'DEBUG',
-            'class': 'logging.handlers.RotatingFileHandler',
-            'maxBytes': 50000,
-            'filename': '/root/awstest/awstest/logs/debug_django.log'
-        },
-        'info_rotate': {
-            'level': 'INFO',
-            'class': 'logging.handlers.RotatingFileHandler',
-            'maxBytes': 50000,
-            'filename': '/root/awstest/awstest/logs/info_django.log'
-        },
         'error': {
             'level': 'ERROR',
             'class': 'logging.FileHandler',
@@ -179,17 +163,17 @@ LOGGING = {
     },
     'loggers': {
         'error': {
-            'handlers': ['error', 'error_rotate'],
+            'handlers': ['error'],
             'level': 'ERROR',
             'propagate': True,
         },
         'debug': {
-            'handlers': ['debug', 'debug_rotate'],
+            'handlers': ['debug'],
             'level': 'DEBUG',
             'propagate': True,
         },
         'info': {
-            'handlers': ['info', 'info_rotate'],
+            'handlers': ['info'],
             'level': 'INFO',
             'propagate': True,
         },
