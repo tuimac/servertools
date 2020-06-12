@@ -34,7 +34,7 @@ function rerunContainer(){
     echo -en "Do you want to commit image? [y(default)/n]: "
     read answer
     if [ "$answer" != "n" ]; then
-        commitImage
+        commitImage ${NAME}
     fi
     docker stop ${NAME}
     docker rm ${NAME}
@@ -52,19 +52,21 @@ function deleteAll(){
 
 function commitImage(){
     docker stop ${NAME}
-    docker commit ${NAME} ${NAME}
+    docker commit ${NAME} $1
     docker start ${NAME}
 }
 
 function pushImage(){
-    docker push ${NAME}
+    commitImage ${IMAGE}
+    docker push ${IMAGE}
     if [ $? -ne 0 ]; then
         cat .password.txt | base64 -d | docker login --username ${DOCKERHUBUSER} --password-stdin
         if [ $? -ne 0 ]; then
             docker login --username ${DOCKERHUBUSER}
         fi
-        docker push ${NAME}
+        docker push ${IMAGE}
     fi
+    docker rmi ${IMAGE}
 }
 
 function registerSecret(){
@@ -113,7 +115,7 @@ function main(){
     elif [ $1 == "delete" ]; then
         deleteAll
     elif [ $1 == "commit" ]; then
-        commitImage
+        commitImage ${NAME}
     elif [ $1 == "push" ]; then
         pushImage
     elif [ $1 == "help" ]; then
