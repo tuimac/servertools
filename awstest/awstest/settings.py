@@ -132,8 +132,9 @@ STATICFILES_DIRS = [
 
 LOGGING = {
     'version': 1,
+    'disable_existing_loggers': True,
     'formatters': {
-        'file': {
+        'base': {
             'format': '\n'.join([
                 '%(asctime)s - %(levelname)s',
                 '%(message)s',
@@ -143,20 +144,23 @@ LOGGING = {
     'handlers': {
         'error': {
             'level': 'ERROR',
-            'class': 'logging.FileHandler',
-            'formatter': 'file',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'maxBytes': 1024 * 1024 * 5,
+            'formatter': 'base',
             'filename': '/root/awstest/awstest/logs/error_django.log'
         },
         'debug': {
             'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'formatter': 'file',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'maxBytes': 1024 * 1024 * 5,
+            'formatter': 'base',
             'filename': '/root/awstest/awstest/logs/debug_django.log'
         },
         'info': {
             'level': 'INFO',
-            'class': 'logging.FileHandler',
-            'formatter': 'file',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'maxBytes': 1024 * 1024 * 5,
+            'formatter': 'base',
             'filename': '/root/awstest/awstest/logs/info_django.log'
         },
 
