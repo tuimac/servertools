@@ -3,6 +3,8 @@ import json
 import logging
 import traceback
 
+logger = logging.getLogger("django")
+
 class EC2:
     def __init__(self):
         self.baseurl = "http://169.254.169.254/latest/"
