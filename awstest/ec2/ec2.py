@@ -1,5 +1,7 @@
 import urllib.request
 import json
+import logging
+import traceback
 
 class EC2:
     def __init__(self):
@@ -30,14 +32,18 @@ class EC2:
                     return self.response
                 except json.decoder.JSONDecodeError as e:
                     self.response[target] = body
+                    logger.error("".join(traceback.format_list()))
                     return self.response
         except KeyError as e:
             self.response["Error"] = "Query Error"
+            logger.error("".join(traceback.format_list()))
             return self.response
         except urllib.error.HTTPError as e:
             self.response["Error"] = "404 Not Found"
+            logger.error("".join(traceback.format_list()))
             return self.response
         except:
             traceback.print_exc()
             self.response["Error"] = "General Error"
+            logger.error("".join(traceback.format_list()))
             return self.response

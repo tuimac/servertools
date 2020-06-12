@@ -126,3 +126,34 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'file': {
+            'format': '\n'.join([
+                '-' * 120,
+                '[%(levelname)s] - %(asctime)s\n',
+                'Source log file: %(pathname)s line: %(lineno)s\n',
+                '%(message)s'
+            ])
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': '/root/awstest/awstest/logs/info_django.log',
+            'maxBytes': 1024 * 1024 * 10,
+            'formatter': 'file'
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}

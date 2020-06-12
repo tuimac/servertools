@@ -1,0 +1,107 @@
+------------------------------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-12 14:43:23,241
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 598
+
+Watching for file changes with StatReloader
+------------------------------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-12 14:44:03,050
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 222
+
+/root/awstest/awstest/awstest/views.py changed, reloading.
+------------------------------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-12 14:44:03,387
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 598
+
+Watching for file changes with StatReloader
+------------------------------------------------------------------------------------------------------------------------
+[ERROR] - 2020-06-12 14:44:08,254
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/log.py line: 228
+
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/root/awstest/awstest/awstest/views.py", line 10, in index
+    return render(reques, "index.html")
+NameError: name 'reques' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib64/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib64/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib64/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/awstest/awstest/awstest/views.py", line 12, in index
+    logging.error("".join(traceback.format_list()))
+TypeError: format_list() missing 1 required positional argument: 'extracted_list'
+------------------------------------------------------------------------------------------------------------------------
+[ERROR] - 2020-06-12 14:44:08,264
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET / HTTP/1.1" 500 61967
+------------------------------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-12 14:53:08,656
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 598
+
+Watching for file changes with StatReloader
+------------------------------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-12 14:53:28,782
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET / HTTP/1.1" 200 1393
+------------------------------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-12 14:53:28,958
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET /static/js/jquery-3.5.1.min.js HTTP/1.1" 200 89476
+------------------------------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-12 14:53:28,967
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET /static/js/bootstrap.min.js HTTP/1.1" 200 58072
+------------------------------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-12 14:53:28,968
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET /static/css/bootstrap.min.css HTTP/1.1" 200 155758
+------------------------------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-12 14:53:29,149
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET /static/js/bootstrap.min.js.map HTTP/1.1" 200 190253
+------------------------------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-12 14:53:29,167
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET /static/css/bootstrap.min.css.map HTTP/1.1" 200 625953
+------------------------------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-12 15:12:26,896
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 598
+
+Watching for file changes with StatReloader
+------------------------------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-12 15:15:27,652
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 222
+
+/root/awstest/awstest/ec2/ec2.py changed, reloading.
+------------------------------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-12 15:15:27,977
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 598
+
+Watching for file changes with StatReloader
