@@ -1,6 +1,6 @@
 from rest_framework import views, status
 from rest_framework.response import Response
-from ec2 import EC2
+from .ec2 import EC2
 import logging
 import traceback
 
