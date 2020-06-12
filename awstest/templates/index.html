@@ -16,7 +16,25 @@
         button.insertAdjacentHTML('afterend', output);
         button.insertAdjacentHTML("afterend", "<h3>Result</h3>")
       }
-
+			$("getbutton").click(function(){
+				var params = {
+					"greeting": $("#greeting").val(),
+				};
+				$.ajax({
+					url: "ec2",
+					type: "GET",
+					scriptCharset: "utf-8",
+          dataType: "application/json",
+					success: function(data){
+						data = JSON.stringify(data, null, 2);
+						data = data.replace(/\\/g, "");
+						print(data, "<pre>", "</pre>");
+					},
+					error: function(data){
+						print(data, "<p>", "</p>");
+					}
+				});
+			});
     </script>
     <script src="{% static "js/jquery-3.5.1.js" %}"></script>
     <script src="{% static "js/bootstrap.min.js" %}"></script>
