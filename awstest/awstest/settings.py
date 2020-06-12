@@ -144,7 +144,7 @@ LOGGING = {
             'class': 'logging.handlers.RotatingFileHandler',
             'maxBytes': 50000,
             'formatter': 'file',
-            'filename': '/root/awstest/awstest/awstest/django.log'
+            'filename': '/root/awstest/awstest/logs/error_django.log'
         },
     },
     'loggers': {
