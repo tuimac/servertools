@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'ec2'
+    'ec2',
+    'container',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -49,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'awstest.urls'
@@ -127,13 +130,16 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
 
+# Logging files
+# https://docs.djangoproject.com/en/3.0/topics/logging/
+
 LOGGING = {
     'version': 1,
-    'disable_existing_loggers': False,
+    'disable_existing_loggers': True,
     'formatters': {
         'file': {
             'format': '\n'.join([
-                '-' * 120,
+                '-' * 100,
                 '[%(levelname)s] - %(asctime)s\n',
                 'Source log file: %(pathname)s line: %(lineno)s\n',
                 '%(message)s'
@@ -157,3 +163,28 @@ LOGGING = {
         },
     },
 }
+
+# CORS setting
+# https://github.com/adamchainz/django-cors-headers#setup
+
+CORS_ORIGIN_WHITELIST = [
+    "http://*",
+]
+
+CORS_ALLOW_METHODS = [
+    'GET',
+    'OPTIONS',
+    'POST',
+]
+
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]

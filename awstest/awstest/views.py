@@ -9,4 +9,4 @@ def index(request):
     try:
         return render(request, "index.html")
     except:
-        logging.error("".join(traceback.format_list()))
+        logging.error(traceback.format_exc())

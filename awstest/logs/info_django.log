@@ -1,0 +1,52 @@
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-13 04:28:43,027
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 598
+
+Watching for file changes with StatReloader
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-13 04:30:27,992
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 222
+
+/root/awstest/awstest/awstest/settings.py changed, reloading.
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-13 04:30:28,308
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 598
+
+Watching for file changes with StatReloader
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-13 04:30:37,913
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET / HTTP/1.1" 200 1818
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-13 04:30:44,528
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET /container/ HTTP/1.1" 200 61
+----------------------------------------------------------------------------------------------------
+[ERROR] - 2020-06-13 04:30:44,529
+
+Source log file: /root/awstest/awstest/ec2/ec2.py line: 37
+
+Traceback (most recent call last):
+  File "/root/awstest/awstest/ec2/ec2.py", line 33, in query
+    self.response[target] = json.loads(body)
+  File "/usr/lib64/python3.6/json/__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib64/python3.6/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib64/python3.6/json/decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-13 04:30:44,530
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET /ec2/ HTTP/1.1" 200 456

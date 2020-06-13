@@ -35,6 +35,20 @@
             print(data, "<p>", "</p>");
           }
         });
+        $.ajax({
+          url: "container",
+          type: "GET",
+          scriptCharset: "utf-8",
+          dataType: "application/json",
+          success: function(data){
+            data = JSON.stringify(data, null, 2);
+            data = data.replace(/\\/g, "");
+            print(data, "<pre>", "</pre>");
+          },
+          error: function(data){
+            print(data, "<p>", "</p>");
+          }
+        });
       });
     </script>
   </body>
