@@ -130,6 +130,9 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
 
+# Logging files
+# https://docs.djangoproject.com/en/3.0/topics/logging/
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': True,
@@ -160,3 +163,28 @@ LOGGING = {
         },
     },
 }
+
+# CORS setting
+# https://github.com/adamchainz/django-cors-headers#setup
+
+CORS_ORIGIN_WHITELIST = [
+    "*",
+]
+
+CORS_ALLOW_METHODS = [
+    'GET',
+    'OPTIONS',
+    'POST',
+]
+
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
