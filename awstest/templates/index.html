@@ -27,6 +27,7 @@
           scriptCharset: "utf-8",
           dataType: "application/json",
           success: function(data){
+            print(data, "<pre>", "</pre>");
             data = JSON.stringify(data, null, 2);
             data = data.replace(/\\/g, "");
             print(data, "<pre>", "</pre>");

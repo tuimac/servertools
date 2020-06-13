@@ -34,7 +34,7 @@ class EC2:
                     return self.response
                 except json.decoder.JSONDecodeError as e:
                     self.response[target] = body
-                    logger.error(traceback.format_exc())
+                    logger.info(traceback.format_exc())
                     return self.response
         except KeyError as e:
             self.response["Error"] = "Query Error(EC2)"
