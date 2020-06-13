@@ -558,3 +558,9 @@ Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/ba
 Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
 
 "GET /container/ HTTP/1.1" 200 61
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-13 04:19:26,082
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 598
+
+Watching for file changes with StatReloader
