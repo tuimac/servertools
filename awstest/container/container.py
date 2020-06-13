@@ -19,14 +19,14 @@ class Container:
             return self.response
         except json.decoder.JSONDecodeError as e:
             self.response[target] = body
-            logger.error("".join(traceback.format_list()))
+            logger.error(traceback.format_exc())
             return self.response
         except KeyError as e:
             self.response["Error"] = "Query Error(EC2)"
-            logger.error("".join(traceback.format_list()))
+            logger.error(traceback.format_exc())
             return self.response
         except:
             traceback.print_exc()
             self.response["Error"] = "General Exception of Error(EC2)"
-            logger.error("".join(traceback.format_list()))
+            logger.error(traceback.format_exc())
             return self.response

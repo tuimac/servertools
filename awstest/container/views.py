@@ -13,4 +13,4 @@ class ContainerAPIViews(views.APIView):
             response = container.query()
             return Response(response)
         except:
-            logger.error("".join(traceback.format_list()))
+            logger.error(traceback.format_exc())

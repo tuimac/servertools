@@ -446,3 +446,75 @@ Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/ba
 Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 598
 
 Watching for file changes with StatReloader
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-13 04:09:12,651
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 222
+
+/root/awstest/awstest/ec2/ec2.py changed, reloading.
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-13 04:09:12,961
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 598
+
+Watching for file changes with StatReloader
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-13 04:09:26,713
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 222
+
+/root/awstest/awstest/container/container.py changed, reloading.
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-13 04:09:27,018
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 598
+
+Watching for file changes with StatReloader
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-13 04:09:40,763
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 222
+
+/root/awstest/awstest/container/views.py changed, reloading.
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-13 04:09:41,069
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 598
+
+Watching for file changes with StatReloader
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-13 04:09:43,413
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 222
+
+/root/awstest/awstest/container/views.py changed, reloading.
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-13 04:09:43,720
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 598
+
+Watching for file changes with StatReloader
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-13 04:09:53,317
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 222
+
+/root/awstest/awstest/ec2/views.py changed, reloading.
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-13 04:09:53,629
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 598
+
+Watching for file changes with StatReloader
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-13 04:10:06,329
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 222
+
+/root/awstest/awstest/awstest/views.py changed, reloading.
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-13 04:10:06,633
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 598
+
+Watching for file changes with StatReloader

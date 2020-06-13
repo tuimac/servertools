@@ -34,18 +34,18 @@ class EC2:
                     return self.response
                 except json.decoder.JSONDecodeError as e:
                     self.response[target] = body
-                    logger.error("".join(traceback.format_list()))
+                    logger.error(traceback.format_exc())
                     return self.response
         except KeyError as e:
             self.response["Error"] = "Query Error(EC2)"
-            logger.error("".join(traceback.format_list()))
+            logger.error(traceback.format_exc())
             return self.response
         except urllib.error.HTTPError as e:
             self.response["Error"] = "404 Not Found(EC2)"
-            logger.error("".join(traceback.format_list()))
+            logger.error(traceback.format_exc())
             return self.response
         except:
             traceback.print_exc()
             self.response["Error"] = "General Error(EC2)"
-            logger.error("".join(traceback.format_list()))
+            logger.error(traceback.format_exc())
             return self.response
