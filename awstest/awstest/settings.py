@@ -129,11 +129,11 @@ STATICFILES_DIRS = [
 
 LOGGING = {
     'version': 1,
-    'disable_existing_loggers': False,
+    'disable_existing_loggers': True,
     'formatters': {
         'file': {
             'format': '\n'.join([
-                '-' * 120,
+                '-' * 100,
                 '[%(levelname)s] - %(asctime)s\n',
                 'Source log file: %(pathname)s line: %(lineno)s\n',
                 '%(message)s'

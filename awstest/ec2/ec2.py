@@ -37,15 +37,15 @@ class EC2:
                     logger.error("".join(traceback.format_list()))
                     return self.response
         except KeyError as e:
-            self.response["Error"] = "Query Error"
+            self.response["Error"] = "Query Error(EC2)"
             logger.error("".join(traceback.format_list()))
             return self.response
         except urllib.error.HTTPError as e:
-            self.response["Error"] = "404 Not Found"
+            self.response["Error"] = "404 Not Found(EC2)"
             logger.error("".join(traceback.format_list()))
             return self.response
         except:
             traceback.print_exc()
-            self.response["Error"] = "General Error"
+            self.response["Error"] = "General Error(EC2)"
             logger.error("".join(traceback.format_list()))
             return self.response
