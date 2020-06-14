@@ -3080,3 +3080,27 @@ Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreloa
 Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 598
 
 Watching for file changes with StatReloader
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 22:29:53,925
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 222
+
+/root/httptracker/httptracker/host/host.py changed, reloading.
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 22:29:54,252
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 598
+
+Watching for file changes with StatReloader
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 22:31:31,595
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 222
+
+/root/httptracker/httptracker/host/host.py changed, reloading.
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 22:31:31,973
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 598
+
+Watching for file changes with StatReloader

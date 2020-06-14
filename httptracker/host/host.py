@@ -16,11 +16,8 @@ class Host:
             self.response["Hostname"] = socket.gethostname()
             self.response["CPU_cores"] = cpu_count()
             return self.response
-        except json.decoder.JSONDecodeError as e:
-            self.response[target] = body
-            logger.error(traceback.format_exc())
-            return self.response
         except:
-            self.response["Error"] = "General Exception of Error(EC2)"
+            self.response["Traceback"] = traceback.format_exc().splitlines()[-1]
+            self.response["Messages"] = "This error is out of scope."
             logger.error(traceback.format_exc())
             return self.response
