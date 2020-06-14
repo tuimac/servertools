@@ -1432,3 +1432,345 @@ json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
 Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
 
 "GET /ec2/ HTTP/1.1" 200 457
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:00:00,023
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET / HTTP/1.1" 200 2021
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:00:03,231
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET /static/css/bootstrap.min.css HTTP/1.1" 304 0
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:00:03,233
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET /static/js/jquery-3.5.1.min.js HTTP/1.1" 304 0
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:00:03,247
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET /static/js/bootstrap.min.js HTTP/1.1" 304 0
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:00:03,382
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET /static/css/bootstrap.min.css.map HTTP/1.1" 304 0
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:00:03,382
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET /static/js/bootstrap.min.js.map HTTP/1.1" 304 0
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:00:05,123
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET /container/ HTTP/1.1" 200 61
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:00:05,124
+
+Source log file: /root/awstest/awstest/ec2/ec2.py line: 37
+
+Traceback (most recent call last):
+  File "/root/awstest/awstest/ec2/ec2.py", line 33, in query
+    self.response[target] = json.loads(body)
+  File "/usr/lib64/python3.6/json/__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib64/python3.6/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib64/python3.6/json/decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:00:05,126
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET /ec2/ HTTP/1.1" 200 457
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:01:23,335
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET / HTTP/1.1" 200 2043
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:01:25,389
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET /container/ HTTP/1.1" 200 61
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:01:25,389
+
+Source log file: /root/awstest/awstest/ec2/ec2.py line: 37
+
+Traceback (most recent call last):
+  File "/root/awstest/awstest/ec2/ec2.py", line 33, in query
+    self.response[target] = json.loads(body)
+  File "/usr/lib64/python3.6/json/__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib64/python3.6/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib64/python3.6/json/decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:01:25,391
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET /ec2/ HTTP/1.1" 200 457
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:03:14,116
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET / HTTP/1.1" 200 2022
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:03:15,532
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET /container/ HTTP/1.1" 200 61
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:03:15,532
+
+Source log file: /root/awstest/awstest/ec2/ec2.py line: 37
+
+Traceback (most recent call last):
+  File "/root/awstest/awstest/ec2/ec2.py", line 33, in query
+    self.response[target] = json.loads(body)
+  File "/usr/lib64/python3.6/json/__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib64/python3.6/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib64/python3.6/json/decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:03:15,534
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET /ec2/ HTTP/1.1" 200 457
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:09:43,521
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET / HTTP/1.1" 200 2022
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:09:54,787
+
+Source log file: /root/awstest/awstest/ec2/ec2.py line: 37
+
+Traceback (most recent call last):
+  File "/root/awstest/awstest/ec2/ec2.py", line 33, in query
+    self.response[target] = json.loads(body)
+  File "/usr/lib64/python3.6/json/__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib64/python3.6/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib64/python3.6/json/decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:09:54,789
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET /ec2/ HTTP/1.1" 200 457
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:09:54,804
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET /container/ HTTP/1.1" 200 61
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:12:29,835
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET / HTTP/1.1" 200 1978
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:12:33,236
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET /container/ HTTP/1.1" 200 61
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:12:33,237
+
+Source log file: /root/awstest/awstest/ec2/ec2.py line: 37
+
+Traceback (most recent call last):
+  File "/root/awstest/awstest/ec2/ec2.py", line 33, in query
+    self.response[target] = json.loads(body)
+  File "/usr/lib64/python3.6/json/__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib64/python3.6/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib64/python3.6/json/decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:12:33,238
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET /ec2/ HTTP/1.1" 200 457
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:13:00,181
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET / HTTP/1.1" 200 1987
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:13:01,820
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET /container/ HTTP/1.1" 200 61
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:13:01,821
+
+Source log file: /root/awstest/awstest/ec2/ec2.py line: 37
+
+Traceback (most recent call last):
+  File "/root/awstest/awstest/ec2/ec2.py", line 33, in query
+    self.response[target] = json.loads(body)
+  File "/usr/lib64/python3.6/json/__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib64/python3.6/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib64/python3.6/json/decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:13:01,822
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET /ec2/ HTTP/1.1" 200 457
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:14:06,864
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET / HTTP/1.1" 200 1987
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:14:08,367
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET /container/ HTTP/1.1" 200 61
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:14:08,368
+
+Source log file: /root/awstest/awstest/ec2/ec2.py line: 37
+
+Traceback (most recent call last):
+  File "/root/awstest/awstest/ec2/ec2.py", line 33, in query
+    self.response[target] = json.loads(body)
+  File "/usr/lib64/python3.6/json/__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib64/python3.6/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib64/python3.6/json/decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:14:08,370
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET /ec2/ HTTP/1.1" 200 457
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:16:21,805
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET / HTTP/1.1" 200 1914
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:16:32,996
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET /container/ HTTP/1.1" 200 61
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:16:32,997
+
+Source log file: /root/awstest/awstest/ec2/ec2.py line: 37
+
+Traceback (most recent call last):
+  File "/root/awstest/awstest/ec2/ec2.py", line 33, in query
+    self.response[target] = json.loads(body)
+  File "/usr/lib64/python3.6/json/__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib64/python3.6/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib64/python3.6/json/decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:16:32,998
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET /ec2/ HTTP/1.1" 200 457
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:16:54,957
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET / HTTP/1.1" 200 1849
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:16:55,003
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET /static/js/jquery-3.5.1.min.js HTTP/1.1" 304 0
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:16:57,070
+
+Source log file: /root/awstest/awstest/ec2/ec2.py line: 37
+
+Traceback (most recent call last):
+  File "/root/awstest/awstest/ec2/ec2.py", line 33, in query
+    self.response[target] = json.loads(body)
+  File "/usr/lib64/python3.6/json/__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib64/python3.6/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib64/python3.6/json/decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:16:57,070
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET /container/ HTTP/1.1" 200 61
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:16:57,072
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET /ec2/ HTTP/1.1" 200 457
