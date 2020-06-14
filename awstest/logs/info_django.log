@@ -2102,3 +2102,9 @@ json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
 Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
 
 "GET /ec2/ HTTP/1.1" 200 457
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-14 07:45:21,303
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 157
+
+"GET / HTTP/1.1" 200 1989
