@@ -150,7 +150,7 @@ LOGGING = {
         'file': {
             'level': 'INFO',
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename': '/root/awstest/awstest/logs/info_django.log',
+            'filename': '/root/httptracker/awstest/logs/info_django.log',
             'maxBytes': 1024 * 1024 * 10,
             'formatter': 'file'
         },
