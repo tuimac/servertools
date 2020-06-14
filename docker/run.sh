@@ -2,7 +2,7 @@
 
 # Change variables below if you need
 ##############################
-NAME="awstest"
+NAME="httptracker"
 VOLUME="${PWD}/volume"
 DOCKERHUBUSER="tuimac"
 IMAGE=${DOCKERHUBUSER}/${NAME}
