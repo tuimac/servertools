@@ -10,9 +10,9 @@ maybe this application fit that.
 
 ## How it works
 
-This application consist of Django Rest Framework.
+This application consist of Django Rest Framework which doesn't have models.
 This application have several APIs to get information from each resources like EC2 meta-data or 
-Container Network Information.
+Container Network Interface Information and so on.
 Each APIs return information is formatted by JSON and just display it.
 
 If you want addtional information from different resources,
