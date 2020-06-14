@@ -15,7 +15,6 @@ class Container:
             self.response["IPAddress"] = socket.gethostbyname(socket.gethostname())
             self.response["Hostname"] = socket.gethostname()
             self.response["CPU cores"] = cpu_count()
-            #print(self.response)
             return self.response
         except json.decoder.JSONDecodeError as e:
             self.response[target] = body

@@ -12,12 +12,12 @@
     <h1>AWS test</h1><br>
     <button id="getbutton">Get Info</button><br>
     <script type="text/javascript">
-      function print(data, starttag, endtag){
+      function print(data, responseType, starttag, endtag){
         let button = document.getElementById("getbutton");
         let now = new Date().toString();
         let output = starttag + data + endtag
         button.insertAdjacentHTML('afterend', output);
-        button.insertAdjacentHTML("afterend", "<b>Result " + now + "</b>");
+        button.insertAdjacentHTML("afterend", "<b>Result " + now + " " + responseType + "</b>");
         button.insertAdjacentHTML("afterend", "<br>" + "-".repeat(140) + "<br>");
       }
       $("#getbutton").click(function(){
@@ -25,29 +25,26 @@
           url: "ec2",
           type: "GET",
           scriptCharset: "utf-8",
-          dataType: "application/json",
           success: function(data){
-            print(data, "<pre>", "</pre>");
             data = JSON.stringify(data, null, 2);
-            data = data.replace(/\\/g, "");
-            print(data, "<pre>", "</pre>");
+            print(data, "sucess", "<pre>", "</pre>");
           },
           error: function(data){
-            print(data, "<p>", "</p>");
+            data = JSON.stringify(data, null, 2);
+            print(data, "error", "<p>", "</p>");
           }
         });
         $.ajax({
           url: "container",
           type: "GET",
           scriptCharset: "utf-8",
-          dataType: "application/json",
           success: function(data){
             data = JSON.stringify(data, null, 2);
-            data = data.replace(/\\/g, "");
-            print(data, "<pre>", "</pre>");
+            print(data, "sucesss", "<pre>", "</pre>");
           },
           error: function(data){
-            print(data, "<p>", "</p>");
+            data = JSON.stringify(data, null, 2);
+            print(data, "error", "<p>", "</p>");
           }
         });
       });
