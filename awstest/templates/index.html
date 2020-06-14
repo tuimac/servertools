@@ -13,13 +13,15 @@
       function print(data, result, url, starttag, endtag){
         let button = document.getElementById("getbutton");
         let now = new Date().toString();
-        button.insertAdjacentHTML('afterend', "<br>" + starttag + data + endtag);
+        button.insertAdjacentHTML("afterend", "<br>" + starttag + data + endtag);
         button.insertAdjacentHTML("afterend", "<b>Url: " + url + "</b><br>");
         button.insertAdjacentHTML("afterend", "<b>Time: " + now + "</b><br>");
         button.insertAdjacentHTML("afterend", "<b>Result: " + result + "</b><br>");
         button.insertAdjacentHTML("afterend", "<br>" + "-".repeat(140) + "<br>");
       }
       $("#getbutton").click(function(){
+        let button = document.getElementById("getbutton");
+        button.insertAdjacentHTML("afterend", "<br>" + "#".repeat(95) + "<br>");
         $.ajax({
           url: "ec2",
           type: "GET",
