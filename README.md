@@ -30,7 +30,7 @@ $ cd httptracker/httptracker
 $ python3 manage.py runserver localhost:8000
 ```
 
-Second, you can use the docker image I created from that.
+Second, you can use the docker image I created.
 (Example)
 ```
 $ docker pull tuimac/httptracker:latest
