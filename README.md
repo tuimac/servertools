@@ -25,16 +25,16 @@ There are two ways to deploy this application.
 First, `git clone` like below
 (Example)
 ```
-$ git clone https://github.com/tuimac/awstest.git
-$ cd awstest/awstest
+$ git clone https://github.com/tuimac/httptracker.git
+$ cd httptracker/httptracker
 $ python3 manage.py runserver localhost:8000
 ```
 
 Second, you can use the docker image I created from that.
 (Example)
 ```
-$ docker pull tuimac/awstest:latest
-$ docker run -itd --name awstest -p 8000:8000 tuimac/awstest:latest
+$ docker pull tuimac/httptracker:latest
+$ docker run -itd --name httptracker -p 8000:8000 tuimac/httptracker:latest
 ```
 
 ## Authors

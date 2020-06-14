@@ -1,6 +1,6 @@
 FROM centos:latest
 
-ARG pjtname=awstest
+ARG pjtname=httptracker
 
 WORKDIR /root
 EXPOSE 8000
@@ -18,8 +18,8 @@ RUN yum update -y && \
     mkdir -p /etc/vim/undo && \
     mkdir -p /etc/vim/backup && \
     rm -rf anaconda-ks.cfg anaconda-post.log original-ks.cfg requirements.txt && \
-    git clone https://github.com/tuimac/awstest.git
+    git clone https://github.com/tuimac/httptracker.git
 
 ADD env/add_remote_repo /root/$pjtname/add_remote_repo
 WORKDIR /root/$pjtname
-CMD ["python3", "awstest/manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["python3", "httptracker/manage.py", "runserver", "0.0.0.0:8000"]

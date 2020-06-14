@@ -2,7 +2,7 @@
 
 GITUSERNAME="tuimac"
 GITEMAIL="tuimac.devadm01@gmail.com"
-REPOURL="https://github.com/tuimac/awstest.git"
+REPOURL="https://github.com/tuimac/httptracker.git"
 
 function checkArg(){
     [[ "$1" = "" ]] && { echo -e "Select files.\nExit."; exit 1; }
