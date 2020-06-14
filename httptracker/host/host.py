@@ -6,7 +6,7 @@ from multiprocessing import cpu_count
 
 logger = logging.getLogger("django")
 
-class Container:
+class Host:
     def __init__(self):
         self.response = dict()
 
@@ -14,18 +14,13 @@ class Container:
         try:
             self.response["IPAddress"] = socket.gethostbyname(socket.gethostname())
             self.response["Hostname"] = socket.gethostname()
-            self.response["CPU cores"] = cpu_count()
+            self.response["CPU_cores"] = cpu_count()
             return self.response
         except json.decoder.JSONDecodeError as e:
             self.response[target] = body
             logger.error(traceback.format_exc())
             return self.response
-        except KeyError as e:
-            self.response["Error"] = "Query Error(EC2)"
-            logger.error(traceback.format_exc())
-            return self.response
         except:
-            traceback.print_exc()
             self.response["Error"] = "General Exception of Error(EC2)"
             logger.error(traceback.format_exc())
             return self.response

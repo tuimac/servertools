@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'ec2',
-    'container',
+    'host',
     'corsheaders',
 ]
 

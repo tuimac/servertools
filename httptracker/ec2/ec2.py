@@ -36,16 +36,13 @@ class EC2:
                     self.response[target] = body
                     logger.info(traceback.format_exc())
                     return self.response
-        except KeyError as e:
-            self.response["Error"] = "Query Error(EC2)"
-            logger.error(traceback.format_exc())
-            return self.response
-        except urllib.error.HTTPError as e:
-            self.response["Error"] = "404 Not Found(EC2)"
+        except (urllib.error.URLError, OSError) as e:
+            self.response["Traceback"] = traceback.format_exc().splitlines()[-1]
+            self.response["Message"] = "Maybe this host is not EC2 or Metadata's URL is wrong."
             logger.error(traceback.format_exc())
             return self.response
         except:
-            traceback.print_exc()
-            self.response["Error"] = "General Error(EC2)"
+            self.response["Traceback"] = traceback.format_exc().splitlines()[-1]
+            self.response["Messages"] = "This error is out of scope."
             logger.error(traceback.format_exc())
             return self.response

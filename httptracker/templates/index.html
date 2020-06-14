@@ -36,16 +36,16 @@
           }
         });
         $.ajax({
-          url: "container",
+          url: "host",
           type: "GET",
           scriptCharset: "utf-8",
           success: function(data){
             data = JSON.stringify(data, null, 2);
-            print(data, "sucess", "container", "<pre>", "</pre>");
+            print(data, "sucess", "host", "<pre>", "</pre>");
           },
           error: function(data){
             data = JSON.stringify(data, null, 2);
-            print(data, "error", "container", "<p>", "</p>");
+            print(data, "error", "host", "<p>", "</p>");
           }
         });
       });

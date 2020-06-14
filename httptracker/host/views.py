@@ -1,20 +1,20 @@
 from rest_framework import views, status
 from rest_framework.response import Response
 from rest_framework.renderers import JSONRenderer
-from .container import Container
+from .host import Host
 import logging
 import traceback
 
 logger = logging.getLogger("django")
 
-class ContainerAPIViews(views.APIView):
+class HostAPIViews(views.APIView):
 
     renderer_classes = [JSONRenderer]
 
     def get(self, request, *args, **kwargs):
         try:
-            container = Container()
-            response = container.query()
+            host = Host()
+            response = host.query()
             return Response(response)
         except:
             logger.error(traceback.format_exc())
