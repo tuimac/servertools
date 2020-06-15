@@ -15,6 +15,7 @@ class HostAPIViews(views.APIView):
         try:
             host = Host()
             response = host.query()
+            response["Url"] = "host"
             return Response(response)
         except:
             logger.error(traceback.format_exc())

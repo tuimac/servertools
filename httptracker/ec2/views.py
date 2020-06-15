@@ -15,6 +15,7 @@ class EC2APIViews(views.APIView):
         try:
             ec2 = EC2()
             response = ec2.query()
+            response["Url"] = "ec2"
             return Response(response)
         except:
             logger.error(traceback.format_exc())

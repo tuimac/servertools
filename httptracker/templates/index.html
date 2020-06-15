@@ -10,44 +10,43 @@
     <h1>AWS test</h1><br>
     <button id="getbutton">Get Info</button><br>
     <script type="text/javascript">
-      function print(data, result, url, starttag, endtag){
-        let button = document.getElementById("getbutton");
+      var urls = [
+        "host",
+        "ec2"
+      ];
+      function print(data, result, urlPrt, starttag, endtag){
         let now = new Date().toString();
-        button.insertAdjacentHTML("afterend", "<br>" + starttag + data + endtag);
-        button.insertAdjacentHTML("afterend", "<b>Url: " + url + "</b><br>");
-        button.insertAdjacentHTML("afterend", "<b>Time: " + now + "</b><br>");
-        button.insertAdjacentHTML("afterend", "<b>Result: " + result + "</b><br>");
-        button.insertAdjacentHTML("afterend", "<br>" + "-".repeat(140) + "<br>");
+        let urltag = document.getElementById(urlPrt + "result");
+        let time = document.getElementById(urlPrt)
+        let output = starttag + data + endtag;
+        urltag.innerHTML = output;
+        time.insertAdjacentHTML("beforeend", "<br><b id=" + now + ">Time: " + now + "</b><br>");
+        urltag.insertAdjacentHTML("afterend", "<b>Result: " + result + "</b><br>");
       }
       $("#getbutton").click(function(){
-        let button = document.getElementById("getbutton");
-        button.insertAdjacentHTML("afterend", "<br>" + "#".repeat(95) + "<br>");
-        $.ajax({
-          url: "ec2",
-          type: "GET",
-          scriptCharset: "utf-8",
-          success: function(data){
-            data = JSON.stringify(data, null, 2);
-            print(data, "sucess", "ec2", "<pre>", "</pre>");
-          },
-          error: function(data){
-            data = JSON.stringify(data, null, 2);
-            print(data, "error", "ec2", "<p>", "</p>");
-          }
-        });
-        $.ajax({
-          url: "host",
-          type: "GET",
-          scriptCharset: "utf-8",
-          success: function(data){
-            data = JSON.stringify(data, null, 2);
-            print(data, "sucess", "host", "<pre>", "</pre>");
-          },
-          error: function(data){
-            data = JSON.stringify(data, null, 2);
-            print(data, "error", "host", "<p>", "</p>");
-          }
-        });
+        for(url of urls){
+          let button = document.getElementById("getbutton");
+          button.insertAdjacentHTML("afterend", "<br>" + "#".repeat(95) + "<br>");
+          button.insertAdjacentHTML("afterend", "<b id=" + url + "result>Loading...</b><br>");         
+          button.insertAdjacentHTML("afterend", "<b id=" + url + ">Url: " + url + "</b><br>");
+          button.insertAdjacentHTML("afterend", "<br>" + "-".repeat(140) + "<br>");
+          $.ajax({
+            url: url,
+            type: "GET",
+            scriptCharset: "utf-8",
+            success: function(data){
+              let dataUrl = data["Url"]
+              data = JSON.stringify(data, null, 2);
+              console.log(dataUrl)
+              print(data, "sucess", dataUrl, "<pre>", "</pre>");
+            },
+            error: function(data){
+              let dataUrl = data["Url"]
+              data = JSON.stringify(data, null, 2);
+              print(data, "error", dataUrl, "<p>", "</p>");
+            }
+          });
+        };
       });
     </script>
   </body>
