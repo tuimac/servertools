@@ -27,7 +27,7 @@
         for(url of urls){
           let button = document.getElementById("getbutton");
           button.insertAdjacentHTML("afterend", "<br>" + "#".repeat(95) + "<br>");
-          button.insertAdjacentHTML("afterend", "<b id=" + url + "result>Loading...</b><br>");         
+          button.insertAdjacentHTML("afterend", "<br><b id=" + url + "result>Loading...</b><br>");         
           button.insertAdjacentHTML("afterend", "<b id=" + url + ">Url: " + url + "</b><br>");
           button.insertAdjacentHTML("afterend", "<br>" + "-".repeat(140) + "<br>");
           $.ajax({

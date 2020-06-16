@@ -21,5 +21,6 @@ urlpatterns = [
     #path("admin/", admin.site.urls),
     path("", views.index, name="index"),
     path("ec2/", include("ec2.urls")),
-    path("host/", include("host.urls"))
+    path("host/", include("host.urls")),
+    #path("traceroute/", include("traceroute.urls"))
 ]
