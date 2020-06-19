@@ -1167,3 +1167,15 @@ Watching for file changes with StatReloader
 Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 598
 
 Watching for file changes with StatReloader
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-19 23:39:59,241
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 222
+
+/root/httptracker/httptracker/httptracker/settings.py changed, reloading.
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-19 23:39:59,518
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 598
+
+Watching for file changes with StatReloader
