@@ -2,6 +2,7 @@ import socket
 import traceback
 import logging
 import random
+import time
 from queue import Queue
 from threading import Thread
 
@@ -23,8 +24,6 @@ class Traceroute:
             self.outbound = Outbound(self.destIp)
             self.outbound.daemon = True
             self.outbound.start()
-            self.inbound.join()
-            self.outbound.join()
         except:
             self.response["traceback"] = traceback.format_exc().splitlines()[-1]
             self.response["messages"] = "this error is out of scope."
@@ -90,7 +89,6 @@ class Outbound(Thread):
         try:
             while not self.__delete:
                 message, ttl = self.__queue.get()
-                print(ttl)
                 self.__socket.setsockopt(socket.SOL_IP, socket.IP_TTL, ttl)
                 self.__socket.sendto(message, (self.__ip, self.__port))
         except KeyboardInterrupt:
