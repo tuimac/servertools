@@ -40,10 +40,11 @@ class Traceroute:
             outbound = self.outbound.getOutboundQueue()
             inbound = self.inbound.getInboundQueue()
             ttl = 1
+
             while True:
                 outbound.put(((b""), ttl))
                 message, info = inbound.get()
-                self.response[ttl] = createResponse(info[0])
+                self.response[ttl] = self.createResponse(info[0])
                 if self.destIp == info[0]: break
                 ttl += 1
             self.outbound.closeEndpoint()
