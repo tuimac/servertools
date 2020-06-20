@@ -3,5 +3,6 @@
 from traceroute import Traceroute
 
 if __name__ == "__main__":
-    traceroute = Traceroute("8.8.8.8")
-    traceroute.traceroute()
+    traceroute = Traceroute("10.0.222.6")
+    response = traceroute.traceroute()
+    print(response)

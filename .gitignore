@@ -3,4 +3,3 @@ add_remote_repo
 volume
 __pycache__
 .aws
-httptracker/httptracker/logs/info_django.log
