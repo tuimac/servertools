@@ -12,7 +12,6 @@ class Traceroute:
     def __init__(self, destIp):
         self.sourceIp = socket.gethostbyname(socket.gethostname())
         self.destIp = destIp
-        self.ttl = 30
         self.response = dict()
         self.__run()
 
@@ -30,16 +29,27 @@ class Traceroute:
             logger.error(traceback.format_exc())
             return self.response
 
+    def createResponse(self, ip):
+        response = dict()
+        response['ip'] = ip
+        response['fqdn'] = socket.gethostbyaddr(ip)
+        return response
+
     def traceroute(self):
         try:
             outbound = self.outbound.getOutboundQueue()
             inbound = self.inbound.getInboundQueue()
-            for ttl in range(1, self.ttl + 1):
+            ttl = 1
+
+            while True:
                 outbound.put(((b""), ttl))
                 message, info = inbound.get()
-                print(info)
+                self.response[ttl] = self.createResponse(info[0])
+                if self.destIp == info[0]: break
+                ttl += 1
             self.outbound.closeEndpoint()
             self.inbound.closeEndpoint()
+            return self.response
         except:
             self.response["traceback"] = traceback.format_exc().splitlines()[-1]
             self.response["messages"] = "this error is out of scope."
@@ -56,10 +66,13 @@ class Inbound(Thread):
         self.__buffer = 0xffff
 
     def run(self):
+        self.__socket.settimeout(3)
         try:
             while not self.__delete:
                 data = self.__socket.recvfrom(self.__buffer)
                 self.__queue.put(data)
+        except socket.timeout:
+            self.closeEndpoint()
         except KeyboardInterrupt:
             self.closeEndpoint()
         except Exception as e:
