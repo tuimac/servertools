@@ -17,3 +17,21 @@ Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreloa
 Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 598
 
 Watching for file changes with StatReloader
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-20 19:17:16,671
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 598
+
+Watching for file changes with StatReloader
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-20 19:18:55,621
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 222
+
+/root/httptracker/httptracker/traceroute/views.py changed, reloading.
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-20 19:18:55,871
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 598
+
+Watching for file changes with StatReloader
