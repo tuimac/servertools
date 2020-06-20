@@ -31,24 +31,33 @@ class Traceroute:
 
     def createResponse(self, ip):
         response = dict()
-        response['ip'] = ip
-        response['fqdn'] = socket.gethostbyaddr(ip)
-        return response
+        try:
+            response["ip"] = ip
+            response["fqdn"] = socket.gethostbyaddr(ip)
+            return response
+        except socket.herror:
+            response["fqdn"] = "NOXDOMAIN"
+            return response
+        except Exception as e:
+            raise e
 
     def traceroute(self):
         try:
             outbound = self.outbound.getOutboundQueue()
             inbound = self.inbound.getInboundQueue()
+            limit = 15
             ttl = 1
-
-            while True:
+            while ttl <= limit:
                 outbound.put(((b""), ttl))
                 message, info = inbound.get()
-                self.response[ttl] = self.createResponse(info[0])
+                if info[0] == "": pass
+                else: self.response[ttl] = self.createResponse(info[0])
                 if self.destIp == info[0]: break
                 ttl += 1
             self.outbound.closeEndpoint()
             self.inbound.closeEndpoint()
+            if len(self.response) == 0:
+                self.response["messages"] == "Can't track route to your place..."
             return self.response
         except:
             self.response["traceback"] = traceback.format_exc().splitlines()[-1]
@@ -66,13 +75,15 @@ class Inbound(Thread):
         self.__buffer = 0xffff
 
     def run(self):
-        self.__socket.settimeout(3)
+        self.__socket.settimeout(1)
         try:
             while not self.__delete:
-                data = self.__socket.recvfrom(self.__buffer)
-                self.__queue.put(data)
-        except socket.timeout:
-            self.closeEndpoint()
+                try:
+                    data = self.__socket.recvfrom(self.__buffer)
+                    self.__queue.put(data)
+                except socket.timeout:
+                    data = ("", ("", ""))
+                    self.__queue.put(data)
         except KeyboardInterrupt:
             self.closeEndpoint()
         except Exception as e:

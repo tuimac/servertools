@@ -14,6 +14,7 @@ class TracerouteAPIViews(views.APIView):
     def get(self, request, *args, **kwargs):
         try:
             traceroute = Traceroute(request.META.get("REMOTE_ADDR"))
+            logger.error(traceroute)
             response = traceroute.traceroute()
             response["Url"] = "traceroute"
             return Response(response)

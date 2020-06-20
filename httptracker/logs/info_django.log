@@ -1,1 +1,19 @@
 
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-20 18:06:40,603
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 598
+
+Watching for file changes with StatReloader
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-20 18:55:15,968
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 222
+
+/root/httptracker/httptracker/httptracker/urls.py changed, reloading.
+----------------------------------------------------------------------------------------------------
+[INFO] - 2020-06-20 18:55:16,221
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 598
+
+Watching for file changes with StatReloader
