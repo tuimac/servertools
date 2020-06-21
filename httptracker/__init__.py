@@ -1,1 +1,1 @@
-from .httptracker import settings
+import .httptracker
