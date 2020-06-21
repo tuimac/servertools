@@ -25,7 +25,6 @@ setup(
     ],
     description="Tools of tracing http requests.",
     python_requires=">=3.4.0",
-    packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
     install_requires=[
