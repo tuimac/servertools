@@ -36,9 +36,4 @@ setup(
     ],
     package_dir={"", "httptracker"},
     packages=find_packages(),
-    entry_points={
-        "console_scripts": [
-            "httptracker=manage:main"
-        ]
-    }    
 )
