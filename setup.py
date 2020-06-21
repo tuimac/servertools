@@ -35,7 +35,7 @@ setup(
         "setuptools"
     ],
     packages=["httptracker"],
-    package_dir={"httptracker": "httptracker"},
+    package_dir={"": "httptracker"},
     entry_points={
         "console_scripts": [
             "httptracker=httptracker.manage:main"
