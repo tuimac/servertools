@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import setup, find_namespace_packages
 import os
 import shutil
 
@@ -34,8 +34,7 @@ setup(
         "django-cors-headers",
         "setuptools"
     ],
-    packages=["httptracker"],
-    package_dir={"": ""},
+    packages=find_namespace_packages(include=["httptracker.*"]),
     entry_points={
         "console_scripts": [
             "httptracker=httptracker.manage:main"
