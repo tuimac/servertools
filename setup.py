@@ -36,7 +36,6 @@ setup(
     ],
     packages=["*"],
     package_dir={"", "httptracker"},
-    package_data={"": ["*.*"]},
 )
 '''
     entry_points={
