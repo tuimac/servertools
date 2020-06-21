@@ -35,11 +35,9 @@ setup(
         "setuptools"
     ],
     packages=["httptracker"],
-)
-'''
     entry_points={
         "console_scripts": [
             "httptracker=httptracker.manage:main"
         ]
     }
-'''
+)
