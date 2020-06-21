@@ -34,5 +34,6 @@ setup(
         "django-filter",
         "django-cors-headers",
         "setuptools"
-    ]
+    ],
+    scripts=["httptracker/manage.py"]
 )
