@@ -35,5 +35,5 @@ setup(
         "setuptools"
     ],
     packages=["httptracker"],
-    package_dir={"httptracker": "httptracker/httptracker"}
+    package_dir={"httptracker": "httptracker"}
 )
