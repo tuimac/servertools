@@ -35,7 +35,6 @@ setup(
         "setuptools"
     ],
     packages=["httptracker"],
-    package_dir={"", "httptracker"},
 )
 '''
     entry_points={
