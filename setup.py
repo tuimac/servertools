@@ -37,7 +37,7 @@ setup(
     packages=["httptracker"],
     entry_points={
         "console_scripts": [
-            "httptracker=httptracker.manage:main"
+            "httptracker=httptracker:main"
         ]
     }
 )
