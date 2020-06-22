@@ -34,7 +34,7 @@ setup(
         "django-cors-headers",
         "setuptools"
     ],
-    packages=find_packages,
+    packages=find_packages(),
     entry_points={
         "console_scripts": [
             "httptracker=httptracker.manage:main"
