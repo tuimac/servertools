@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 
-import subprocess
+from subprocess import DEVNULL, PIPE, Popen
 import sys
 import traceback
+import time
+import os
 
 PORT = '8000'
+PIDFILE = 'httptracker.pid'
 
 def usage():
     print('usage: httptracker [help | start | restart | stop]\n')
@@ -19,7 +22,23 @@ def main():
             sys.exit(1)
         arg = sys.argv[1]
         if arg == 'start':
-            subprocess.run(['python3', 'manage.py', 'runserver', '0.0.0.0:' + PORT])
+            try:
+                command = ['python3', 'manage.py', 'runserver', '0.0.0.0:' + PORT]
+
+                with Popen(command, stdout=PIPE, stderr=PIPE) as popen:
+                    time.sleep(3)
+                    popen.stdout.readline()
+                '''
+                if stderr != b'':
+                    popen.kill()
+                    print(stderr)
+                else:
+                    with open(PIDFILE, 'w') as f:
+                        f.write(str(popen.pid))
+                    print('Start success.')
+                '''
+            except Exception as e:
+                raise e
         elif arg == 'restart':
             pass
         elif arg == 'stop':
