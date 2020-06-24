@@ -1,13 +1,36 @@
 #!/usr/bin/env python3
 
-from subprocess import DEVNULL, PIPE, Popen
+from subprocess import Popen, PIPE, DEVNULL, run
+import socket
 import sys
 import traceback
 import time
 import os
 
 PORT = '8000'
-PIDFILE = 'httptracker.pid'
+
+def startProcess(command):
+    try:
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.bind((socket.gethostbyname(socket.gethostname()), int(PORT)))
+        sock.close()
+        popen = Popen(command, stdout=DEVNULL, stderr=PIPE)
+        time.sleep(3)
+    except OSError as e:
+        raise e
+    except Exception as e:
+        raise e
+
+def stopProcess(command):
+    try:
+        killCommand = ['pkill', '-f', ' '.join(command)]
+        print(killCommand)
+        run(killCommand)
+        time.sleep(2)
+    except OSError as e:
+        raise e
+    except Exception as e:
+        raise e
 
 def usage():
     print('usage: httptracker [help | start | restart | stop]\n')
@@ -16,39 +39,37 @@ def usage():
     print('stop        Stop httptracker process\n')
 
 def main():
+    command = ['python3', 'manage.py', 'runserver', '0.0.0.0:' + PORT]
     try:
-        if len(sys.argv) != 2:
-            usage()
-            sys.exit(1)
-        arg = sys.argv[1]
-        if arg == 'start':
-            try:
-                command = ['python3', 'manage.py', 'runserver', '0.0.0.0:' + PORT]
-
-                with Popen(command, stdout=PIPE, stderr=PIPE) as popen:
-                    time.sleep(3)
-                    popen.stdout.readline()
-                '''
-                if stderr != b'':
-                    popen.kill()
-                    print(stderr)
-                else:
-                    with open(PIDFILE, 'w') as f:
-                        f.write(str(popen.pid))
-                    print('Start success.')
-                '''
-            except Exception as e:
-                raise e
-        elif arg == 'restart':
-            pass
-        elif arg == 'stop':
-            pass
-        elif arg == 'help':
-            usage()
-        else:
-            usage()
+        parser = argparse.ArgumentParser(
+            prog = 'cfnclient',
+            description = 'Automate to create and delete stacks.',
+            add_help = True
+    	)
+        parser.add_argument(
+            '--start',
+            action = 'store_true',
+            dest = 'start',
+            help = 'Start httptracker process.',
+        )
+        parser.add_argument(
+            '--restart',
+            action = 'store_true',
+            dest = 'restart',
+            help = 'Restart httptracker process.'
+        )
+        parser.add_argument(
+            '--stop',
+            action = 'store_true',
+            dest = 'stop',
+            help = 'Stop httptracker process.',
+        )
+        args = parser.parse_args()
     except SystemExit:
         pass
+    except OSError:
+        message = traceback.format_exc().splitlines()[-1]
+        print(message, file=sys.stderr)
     except:
         traceback.print_exc()
 
