@@ -13,7 +13,8 @@ def startProcess(command, port):
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.bind((socket.gethostbyname(socket.gethostname()), int(port)))
         sock.close()
-        popen = Popen(command, stdout=DEVNULL, stderr=PIPE)
+        #popen = Popen(command, stdout=DEVNULL, stderr=PIPE)
+        popen = os.popen(' '.join(command))
         time.sleep(3)
         print("Start httptracker is sucess.")
     except OSError as e:
