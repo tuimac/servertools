@@ -6,7 +6,10 @@ import sys
 import traceback
 import argparse
 import time
+import logging
 import os
+
+logger = logging.getLogger("django")
 
 def startProcess(command, port):
     try:
@@ -21,6 +24,8 @@ def startProcess(command, port):
         raise e
     except Exception as e:
         raise e
+    except PermissionError as e:
+        raise e
 
 def stopProcess(command):
     try:
@@ -31,6 +36,8 @@ def stopProcess(command):
     except OSError as e:
         raise e
     except Exception as e:
+        raise e
+    except PermissionError as e:
         raise e
 
 class CustomArgparse(argparse.ArgumentParser):
