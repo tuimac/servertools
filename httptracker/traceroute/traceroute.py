@@ -36,7 +36,7 @@ class Traceroute:
             response["fqdn"] = socket.gethostbyaddr(ip)
             return response
         except socket.herror:
-            response["fqdn"] = "NOXDOMAIN"
+            response["fqdn"] = "NXDOMAIN"
             return response
         except Exception as e:
             raise e
