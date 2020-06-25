@@ -87,8 +87,7 @@ def main():
         if args.port != 8000: port = str(args.port[0])
         else: port = str(args.port)
         
-        managePath = os.getcwd() + "/manage.py"
-        command = ["python3", managePath, "runserver", ipaddress + ":" + port]
+        command = ["python3", os.path.dirname(__file__) + "/manage.py", "runserver", ipaddress + ":" + port]
 
         if args.mode:
             mode = args.mode[0]
