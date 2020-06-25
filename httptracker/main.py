@@ -15,7 +15,7 @@ def startProcess(command, port):
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         result = sock.connect_ex((socket.gethostbyname(socket.gethostname()), int(port)))
-        if result != 0: raise OSError("[Errno 98] Address already in use")
+        if result == 0: raise OSError("[Errno 98] Address already in use")
         sock.close()
         #popen = Popen(command, stdout=DEVNULL, stderr=PIPE)
         popen = os.popen(' '.join(command))
