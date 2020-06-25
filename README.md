@@ -58,6 +58,15 @@ optional arguments:
   -i IPADDRESS, --ipaddress IPADDRESS
                         [Optional]Direct listen ip address which httptracker process use. Default is 0.0.0.0 .
 ```
+Here is option for deploying this package to AWS EC2. Copy it and paste it to UserData section.
+```
+#!/bin/bash
+
+yum update -y
+yum install -y python3 git
+pip3 install git+https://github.com/tuimac/httptracker.git
+httptracker -m start -p 80
+```
 
 ## Authors
 
