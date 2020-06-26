@@ -15,10 +15,14 @@
         "ec2",
         "traceroute"
       ];
+      var clickCount = 0
       function print(data, result, url, starttag, endtag){
         let now = new Date().toString();
-        let urltag = document.getElementById(url + "result");
-        let time = document.getElementById(url)
+        clickCount--;
+        let urltag = document.getElementById(url + clickCount.toString());
+        clickCount++;
+        console.log(url + clickCount.toString());
+        let time = document.getElementById(url);
         let output = starttag + data + endtag;
         urltag.innerHTML = output;
         time.insertAdjacentHTML("beforeend", "<br><b id=" + now + ">Time: " + now + "</b><br>");
@@ -28,7 +32,7 @@
         for(url of urls){
           let button = document.getElementById("getbutton");
           button.insertAdjacentHTML("afterend", "<br>" + "#".repeat(95) + "<br>");
-          button.insertAdjacentHTML("afterend", "<br><b id=" + url + "result>Loading...</b><br>");         
+          button.insertAdjacentHTML("afterend", "<br><b id=" + url + clickCount.toString() + ">Loading...</b><br>");         
           button.insertAdjacentHTML("afterend", "<b id=" + url + ">Url: " + url + "</b><br>");
           button.insertAdjacentHTML("afterend", "<br>" + "-".repeat(140) + "<br>");
           $.ajax({
@@ -38,7 +42,6 @@
             success: function(data){
               let dataUrl = data["Url"]
               data = JSON.stringify(data, null, 2);
-              console.log(dataUrl)
               print(data, "sucess", dataUrl, "<pre>", "</pre>");
             },
             error: function(data){
@@ -48,6 +51,7 @@
             }
           });
         };
+        clickCount++;
       });
     </script>
   </body>
