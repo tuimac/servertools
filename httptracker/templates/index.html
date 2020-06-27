@@ -8,9 +8,9 @@
   </head>
   <body>
     <h1>HTTP Tracker</h1><br>
-    <input type='checkbox' id='0' value='host'/>host<br>
-    <input type='checkbox' id='1' value='ec2'/>ec2<br>
-    <input type='checkbox' id='2' value='traceroute'/>traceroute<br>
+    <input type='checkbox' id='host'/>host<br>
+    <input type='checkbox' id='ec2'/>ec2<br>
+    <input type='checkbox' id='traceroute'/>traceroute<br>
     <br><button id='getbutton'>Send request</button><br>
     <script type='text/javascript'>
       var urls = [];
@@ -20,9 +20,9 @@
         let inputs = document.getElementsByTagName('input');
         for(let i = 0; i < inputs.length; i++){
           if(inputs[i].type == 'checkbox'){
-            checkBox = document.getElementById(inputs[i].value);
-            if(checkBox == true){
-              urls.push(inputs[i].value);
+            checkBox = document.getElementById(inputs[i].id);
+            if(checkBox.checked == true){
+              urls.push(inputs[i].id);
             }
           }
         }
@@ -42,7 +42,9 @@
       };
 
       $('#getbutton').click(function(){
+        urls = [];
         addUrls();
+        console.log(urls)
         for(url of urls){
           let button = document.getElementById('getbutton');
           button.insertAdjacentHTML('afterend', '<br>' + '#'.repeat(95) + '<br>');
