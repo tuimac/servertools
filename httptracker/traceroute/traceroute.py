@@ -45,7 +45,7 @@ class Traceroute:
         try:
             outbound = self.outbound.getOutboundQueue()
             inbound = self.inbound.getInboundQueue()
-            limit = 15
+            limit = 30
             ttl = 1
             while ttl <= limit:
                 outbound.put(((b""), ttl))
@@ -57,7 +57,7 @@ class Traceroute:
             self.outbound.closeEndpoint()
             self.inbound.closeEndpoint()
             if len(self.response) == 0:
-                self.response["messages"] == "Can't track route to your place..."
+                self.response["messages"] = "Can't track route to your place..."
             return self.response
         except:
             self.response["traceback"] = traceback.format_exc().splitlines()[-1]
