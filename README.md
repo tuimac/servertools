@@ -49,7 +49,8 @@ Help of httptracker below:
 ```
 usage: httptracker [-h] -m MODE [-p PORT] [-i IPADDRESS]
 
-Track HTTP request to the end of the host. ex) httptracker --mode start -p 80
+Track HTTP request to the end of the host. 
+ex) httptracker --mode start -p 80
 
 optional arguments:
   -h, --help            show this help message and exit
