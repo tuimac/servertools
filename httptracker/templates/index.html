@@ -2,52 +2,75 @@
 {% load static %}
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script rel="javascript" src="{% static "js/jquery-3.5.1.min.js" %}"></script>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'>
+    <link rel='stylesheet' href='{% static 'css/bootstrap.min.css' %}'>
+    <script rel='javascript' src='{% static 'js/jquery-3.5.1.min.js' %}'></script>
   </head>
   <body>
-    <h1>AWS test</h1><br>
-    <button id="getbutton">Get Info</button><br>
-    <script type="text/javascript">
-      var urls = [
-        "host",
-        "ec2",
-        "traceroute"
-      ];
-      function print(data, result, urlPrt, starttag, endtag){
+    <div class='mx-4 my-5'>
+      <h1>HTTP Tracker</h1><br>
+      <input type='checkbox' id='host'/> host<br>
+      <input type='checkbox' id='ec2'/> ec2<br>
+      <input type='checkbox' id='traceroute'/> traceroute<br>
+      <input type='checkbox' id='httpreq'/> httpreq<br>
+      <br><button id='getbutton'>Send request</button><br>
+    </div>
+    <script type='text/javascript'>
+      var urls = [];
+      var clickCount = 0;
+
+      function addUrls(){
+        let inputs = document.getElementsByTagName('input');
+        for(let i = 0; i < inputs.length; i++){
+          if(inputs[i].type == 'checkbox'){
+            checkBox = document.getElementById(inputs[i].id);
+            if(checkBox.checked == true){
+              urls.push(inputs[i].id);
+            }
+          }
+        }
+      };
+
+      function print(data, result, url, starttag, endtag){
         let now = new Date().toString();
-        let urltag = document.getElementById(urlPrt + "result");
-        let time = document.getElementById(urlPrt)
+        clickCount--;
+        let urltag = document.getElementById(url + clickCount.toString() + '_result');
+        let time = document.getElementById(url + clickCount.toString());
+        clickCount++;
         let output = starttag + data + endtag;
         urltag.innerHTML = output;
-        time.insertAdjacentHTML("beforeend", "<br><b id=" + now + ">Time: " + now + "</b><br>");
-        urltag.insertAdjacentHTML("afterend", "<b>Result: " + result + "</b><br>");
-      }
-      $("#getbutton").click(function(){
+        time.insertAdjacentHTML('beforeend', '<br><b id=' + now + '>Time: ' + now + '</b>');
+        time.insertAdjacentHTML('beforeend', '<br><b>Result: ' + result + '</b>');
+        time.insertAdjacentHTML('beforeend', '<br><b>Click Count: ' + clickCount.toString() + '</b><br>');
+      };
+
+      $('#getbutton').click(function(){
+        urls = [];
+        addUrls();
         for(url of urls){
-          let button = document.getElementById("getbutton");
-          button.insertAdjacentHTML("afterend", "<br>" + "#".repeat(95) + "<br>");
-          button.insertAdjacentHTML("afterend", "<br><b id=" + url + "result>Loading...</b><br>");         
-          button.insertAdjacentHTML("afterend", "<b id=" + url + ">Url: " + url + "</b><br>");
-          button.insertAdjacentHTML("afterend", "<br>" + "-".repeat(140) + "<br>");
+          let button = document.getElementById('getbutton');
+          button.insertAdjacentHTML('afterend', '<br>' + '#'.repeat(95) + '<br>');
+          button.insertAdjacentHTML('afterend', '<br><b id=' + url + clickCount.toString() + '_result>Loading...</b>');         
+          button.insertAdjacentHTML('afterend', '<b id=' + url + clickCount.toString() + '>Url: ' + url + '</b>');
+          button.insertAdjacentHTML('afterend', '<br>' + '-'.repeat(160) + '<br>');
           $.ajax({
             url: url,
-            type: "GET",
-            scriptCharset: "utf-8",
+            type: 'GET',
+            scriptCharset: 'utf-8',
             success: function(data){
-              let dataUrl = data["Url"]
+              let dataUrl = data['Url']
               data = JSON.stringify(data, null, 2);
-              console.log(dataUrl)
-              print(data, "sucess", dataUrl, "<pre>", "</pre>");
+              print(data, 'sucess', dataUrl, '<pre>', '</pre>');
             },
             error: function(data){
-              let dataUrl = data["Url"]
+              let dataUrl = data['Url']
               data = JSON.stringify(data, null, 2);
-              print(data, "error", dataUrl, "<p>", "</p>");
+              print(data, 'error', dataUrl, '<p>', '</p>');
             }
           });
         };
+        clickCount++;
       });
     </script>
   </body>

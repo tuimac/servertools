@@ -20,14 +20,14 @@ you can add APIs by `python3 manage.py startapp <resource name>`.
 
 ## How to deploy
 
-There are three ways to deploy this application.
+There are three ways to deploy this application. This program need root privilege.
 
 First, `git clone` like below
 (Example)
 ```
 $ git clone https://github.com/tuimac/httptracker.git
 $ cd httptracker/httptracker
-$ python3 manage.py runserver 0.0.0.0:8000
+$ sudo python3 manage.py runserver 0.0.0.0:8000
 ```
 
 Second, you can use the docker image I created.
@@ -38,11 +38,11 @@ $ docker run -itd --name httptracker -p 8000:8000 tuimac/httptracker:latest
 ```
 
 Third, use pip3 to install package to your python3 module directory and
-create execution command.
+create execution command. This program need root privilege.
 (Example)
 ```
 $ pip3 install git+https://github.com/tuimac/httptracker.git
-$ httptracker -m start
+$ sudo httptracker -m start
 ```
 Help of httptracker below:
 
@@ -58,6 +58,24 @@ optional arguments:
   -p PORT, --port PORT  [Optional]Direct port which httptracker process use. Default is 8000/tcp.
   -i IPADDRESS, --ipaddress IPADDRESS
                         [Optional]Direct listen ip address which httptracker process use. Default is 0.0.0.0 .
+```
+Here is option for deploying this package to AWS EC2. Copy it and paste it to UserData section.
+
+```
+#!/bin/bash
+
+yum update -y
+yum install -y python3 git
+pip3 install git+https://github.com/tuimac/httptracker.git
+httptracker -m start -p 80
+```
+## How to uninstall
+
+It's easy if you use `pip3`. 
+This program deployed to the location need root privilege.
+
+```
+$ sudo pip3 uninstall httptracker
 ```
 
 ## Authors

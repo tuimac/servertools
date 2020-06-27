@@ -6,12 +6,16 @@ import sys
 import traceback
 import argparse
 import time
+import logging
 import os
+
+logger = logging.getLogger("django")
 
 def startProcess(command, port):
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.bind((socket.gethostbyname(socket.gethostname()), int(port)))
+        result = sock.connect_ex((socket.gethostbyname(socket.gethostname()), int(port)))
+        if result == 0: raise OSError("[Errno 98] Address already in use")
         sock.close()
         #popen = Popen(command, stdout=DEVNULL, stderr=PIPE)
         popen = os.popen(' '.join(command))
@@ -20,6 +24,8 @@ def startProcess(command, port):
     except OSError as e:
         raise e
     except Exception as e:
+        raise e
+    except PermissionError as e:
         raise e
 
 def stopProcess(command):
@@ -31,6 +37,8 @@ def stopProcess(command):
     except OSError as e:
         raise e
     except Exception as e:
+        raise e
+    except PermissionError as e:
         raise e
 
 class CustomArgparse(argparse.ArgumentParser):
@@ -86,8 +94,8 @@ def main():
         else: ipaddress = args.ipaddress
         if args.port != 8000: port = str(args.port[0])
         else: port = str(args.port)
-
-        command = ["python3", "manage.py", "runserver", ipaddress + ":" + port]
+        
+        command = ["python3", os.path.dirname(__file__) + "/manage.py", "runserver", ipaddress + ":" + port]
 
         if args.mode:
             mode = args.mode[0]

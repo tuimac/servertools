@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'ec2',
     'host',
     'traceroute',
+    'httpreq'
 ]
 
 MIDDLEWARE = [
