@@ -3,28 +3,24 @@
 # Change variables below if you need
 ##############################
 NAME="httptracker"
-VOLUME="${PWD}/volume"
 DOCKERHUBUSER="tuimac"
 IMAGE=${DOCKERHUBUSER}/${NAME}
 ##############################
 
 function runContainer(){
     docker run -itd --name ${NAME} \
-                -h ${NAME} \
-                -v "${VOLUME}:/tmp" \
-                -v "/etc/localtime:/etc/localtime:ro" \
-                -p "8000:8000" \
-                --network="bridge" \
-                ${NAME}
+            -h ${NAME} \
+            -p "80:8000" \
+            ${NAME}
 }
 
 function cleanup(){
     docker image prune -f
+    docker logs ${NAME}
     docker container prune -f
 }
 
 function createContainer(){
-    mkdir ${VOLUME}
     docker build -t ${NAME} .
     runContainer
     cleanup
@@ -47,7 +43,6 @@ function deleteAll(){
     docker rm ${NAME}
     docker rmi ${NAME}
     cleanup
-    rm -rf ${VOLUME}
 }
 
 function commitImage(){
