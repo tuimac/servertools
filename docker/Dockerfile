@@ -1,25 +1,20 @@
-FROM centos:latest
-
-ARG pjtname=httptracker
+FROM alpine:latest
 
 WORKDIR /root
+
 EXPOSE 8000
 
-ADD env/vimrc /etc/vimrc
-ADD env/bashrc /root/.bashrc
-ADD env/login_screen /root/.login_screen
-ADD env/centos/vim.sh /etc/profile.d/vim.sh
 ADD requirements.txt /root/requirements.txt
 
-RUN yum update -y && \
-    yum install -y iproute curl unzip tcpdump net-tools git tree bind-utils traceroute vim* && \
-    dnf install -y python3 && \
+RUN apk update && \
+    apk upgrade && \
+    apk add --no-cache bash git icu-dev ncurse icu-libs vim python3 py3-pip curl jq tree && \
+    git clone https://github.com/tuimac/httptracker && \
+    mkdir /etc/vim/backup && \
+    mkdir /etc/vim/undo && \
     pip3 install -r requirements.txt && \
-    mkdir -p /etc/vim/undo && \
-    mkdir -p /etc/vim/backup && \
-    rm -rf anaconda-ks.cfg anaconda-post.log original-ks.cfg requirements.txt && \
-    git clone https://github.com/tuimac/httptracker.git
+ 	rm /etc/vim/vimrc && \
+    curl -L https://raw.githubusercontent.com/tuimac/tools/master/vim/vimrc -o /etc/vim/vimrc && \
+    curl -L https://raw.githubusercontent.com/tuimac/tools/master/linux/bashrc/.bashrc_node_docker -o /root/.bashrc
 
-ADD env/add_remote_repo /root/$pjtname/add_remote_repo
-WORKDIR /root/$pjtname
-CMD ["python3", "httptracker/manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["python3", "/root/httptracker/manage.py", "runserver", "0.0.0.0:8000"]

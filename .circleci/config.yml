@@ -10,15 +10,14 @@ jobs:
       - checkout
       - run:
           name: Build images
-          working_directory: builds
+          working_directory: docker
           command: docker build -t ${IMAGE} .
       - run:
           name: Start containers
-          working_directory: builds
+          working_directory: docker
           command: docker run -itd --name ${NAME} -p ${PORT}:8000 ${IMAGE}
       - run:
           name: Integration test - Test connection
-          working_directory: test
           command: |
             set +e
             for i in {0..100}; do
