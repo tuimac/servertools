@@ -1,5 +1,7 @@
 # Tracking http requests
 
+[![CircleCI](https://circleci.com/gh/tuimac/httptracker.svg?style=shield)](https://circleci.com/gh/tuimac/httptracker)
+
 This repository is small web application to get information from host server or container itself.
 You can track the http accesses to each container or each host Server by this service.
 

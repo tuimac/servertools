@@ -1,0 +1,70 @@
+version: 2.1
+jobs:
+  test-image:
+    machine: true
+    environment:
+      - IMAGE: tuimac/httptracker
+      - NAME: httptracker
+      - PORT: 80
+    steps:
+      - checkout
+      - run:
+          name: Build images
+          working_directory: builds
+          command: docker build -t ${IMAGE} .
+      - run:
+          name: Start containers
+          working_directory: builds
+          command: docker run -itd --name ${NAME} -p ${PORT}:8000 ${IMAGE}
+      - run:
+          name: Integration test - Test connection
+          working_directory: test
+          command: |
+            set +e
+            for i in {0..100}; do
+              curl http://localhost
+              [[ $? -eq 0 ]] && break;
+              sleep 3;
+              [[ $i -eq 99 ]] && exit 1;
+            done
+  push-image:
+    machine:
+      image: ubuntu-2004:202010-01
+    environment:
+      - BUILDX: https://github.com/docker/buildx/releases/download/v0.5.1/buildx-v0.5.1.linux-amd64
+      - IMAGE: tuimac/httptracker
+    steps:
+      - checkout
+      - run:
+          name: Create directory for Docker Buildx plugin binary
+          command: mkdir -vp ~/.docker/cli-plugins/
+      - run:
+          name: Login Docker Hub
+          command: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      - run:
+          name: Download Buildx
+          command: curl --silent -L --output ~/.docker/cli-plugins/docker-buildx ${BUILDX}
+      - run:
+          name: Add permission to execute buildx
+          command: chmod a+x ~/.docker/cli-plugins/docker-buildx
+      - run:
+          name: Create docker driver
+          command: |
+            docker run --rm --privileged docker/binfmt:820fdd95a9972a5308930a2bdfb8573dd4447ad3
+            docker buildx create --name circleci
+            docker buildx use circleci
+      - run:
+          name: Build and Push docker image to Docker Hub
+          working_directory: builds
+          command: docker buildx build --platform linux/amd64,linux/arm64 -t ${IMAGE} --push .
+workflows:
+  version: 2.1
+  httptracker-pipeline:
+    jobs:
+      - test-image
+      - push-image:
+          requires:
+            - test-image
+          filters:
+            branches:
+              only: master
