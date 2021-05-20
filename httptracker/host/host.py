@@ -11,7 +11,7 @@ class Host:
     def __init__(self):
         self.response = dict()
 
-    def command(command):
+    def command(self, command):
         p = subprocess.Popen(
             command,
             shell=True, 
@@ -29,8 +29,8 @@ class Host:
             self.response["IPAddress"] = socket.gethostbyname(socket.gethostname())
             self.response["Hostname"] = socket.gethostname()
             self.response["CPU_cores"] = cpu_count()
-            command("touch /test-mount")
-            self.response["ls"] = command("ls -al /test-mount")
+            self.command("touch /test-mount/test")
+            self.response["ls"] = self.command("ls -al /test-mount")
             return self.response
         except:
             self.response["Traceback"] = traceback.format_exc().splitlines()[-1]

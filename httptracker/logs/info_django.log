@@ -1,1 +1,129 @@
 
+----------------------------------------------------------------------------------------------------
+[INFO] - 2021-05-20 12:54:51,884
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 636
+
+Watching for file changes with StatReloader
+----------------------------------------------------------------------------------------------------
+[INFO] - 2021-05-20 12:54:56,011
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 161
+
+"GET / HTTP/1.1" 200 2982
+----------------------------------------------------------------------------------------------------
+[INFO] - 2021-05-20 12:54:56,038
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 161
+
+"GET /static/css/bootstrap.min.css HTTP/1.1" 200 155758
+----------------------------------------------------------------------------------------------------
+[INFO] - 2021-05-20 12:54:56,039
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 161
+
+"GET /static/js/jquery-3.5.1.min.js HTTP/1.1" 200 89476
+----------------------------------------------------------------------------------------------------
+[WARNING] - 2021-05-20 12:54:56,089
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/log.py line: 230
+
+Not Found: /favicon.ico
+----------------------------------------------------------------------------------------------------
+[WARNING] - 2021-05-20 12:54:56,089
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 161
+
+"GET /favicon.ico HTTP/1.1" 404 2553
+----------------------------------------------------------------------------------------------------
+[INFO] - 2021-05-20 12:55:01,574
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 161
+
+"GET /host HTTP/1.1" 301 0
+----------------------------------------------------------------------------------------------------
+[ERROR] - 2021-05-20 12:55:01,620
+
+Source log file: /root/httptracker/httptracker/host/host.py line: 38
+
+Traceback (most recent call last):
+  File "/root/httptracker/httptracker/host/host.py", line 32, in query
+    command("touch /test-mount")
+NameError: name 'command' is not defined
+
+----------------------------------------------------------------------------------------------------
+[INFO] - 2021-05-20 12:55:01,623
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 161
+
+"GET /host/ HTTP/1.1" 200 175
+----------------------------------------------------------------------------------------------------
+[INFO] - 2021-05-20 12:56:03,193
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 250
+
+/root/httptracker/httptracker/host/host.py changed, reloading.
+----------------------------------------------------------------------------------------------------
+[INFO] - 2021-05-20 12:56:03,437
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 636
+
+Watching for file changes with StatReloader
+----------------------------------------------------------------------------------------------------
+[ERROR] - 2021-05-20 12:56:06,131
+
+Source log file: /root/httptracker/httptracker/host/host.py line: 38
+
+Traceback (most recent call last):
+  File "/root/httptracker/httptracker/host/host.py", line 32, in query
+    self.command("touch /test-mount")
+TypeError: command() takes 1 positional argument but 2 were given
+
+----------------------------------------------------------------------------------------------------
+[INFO] - 2021-05-20 12:56:06,132
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 161
+
+"GET /host/ HTTP/1.1" 200 200
+----------------------------------------------------------------------------------------------------
+[INFO] - 2021-05-20 12:56:21,902
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 250
+
+/root/httptracker/httptracker/host/host.py changed, reloading.
+----------------------------------------------------------------------------------------------------
+[INFO] - 2021-05-20 12:56:22,143
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 636
+
+Watching for file changes with StatReloader
+----------------------------------------------------------------------------------------------------
+[INFO] - 2021-05-20 12:56:23,207
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/core/servers/basehttp.py line: 161
+
+"GET /host/ HTTP/1.1" 200 161
+----------------------------------------------------------------------------------------------------
+[INFO] - 2021-05-20 12:56:47,645
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 250
+
+/root/httptracker/httptracker/host/host.py changed, reloading.
+----------------------------------------------------------------------------------------------------
+[INFO] - 2021-05-20 12:56:47,892
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 636
+
+Watching for file changes with StatReloader
+----------------------------------------------------------------------------------------------------
+[INFO] - 2021-05-20 12:57:46,919
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 250
+
+/root/httptracker/httptracker/host/host.py changed, reloading.
+----------------------------------------------------------------------------------------------------
+[INFO] - 2021-05-20 12:57:47,160
+
+Source log file: /usr/local/lib64/python3.6/site-packages/django/utils/autoreload.py line: 636
+
+Watching for file changes with StatReloader
