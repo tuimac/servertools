@@ -10,12 +10,12 @@ jobs:
       - checkout
       - run:
           name: Build images
-          working_directory: docker
+          working_directory: docker/prod
           command: docker build -t ${IMAGE} .
       - run:
           name: Start containers
-          working_directory: docker
-          command: docker run -itd --name ${NAME} -p ${PORT}:8000 ${IMAGE}
+          working_directory: docker/prod
+          command: docker run -itd --name ${NAME} -p ${PORT}:80 ${IMAGE}
       - run:
           name: Integration test - Test connection
           command: |
@@ -54,7 +54,7 @@ jobs:
             docker buildx use circleci
       - run:
           name: Build and Push docker image to Docker Hub
-          working_directory: docker
+          working_directory: docker/prod
           command: docker buildx build --platform linux/amd64,linux/arm64 -t ${IMAGE} --push .
 workflows:
   version: 2.1

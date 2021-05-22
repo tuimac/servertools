@@ -2,10 +2,12 @@ FROM alpine:latest
 
 WORKDIR /root
 
-EXPOSE 80
+expose 80
+expose 8000
 
 ADD requirements.txt /root/requirements.txt
 ADD nginx.conf /etc/nginx/nginx.conf
+ADD entrypoint.sh /root/entrypoint.sh
 
 RUN apk update && \
     apk upgrade && \
@@ -33,7 +35,6 @@ cat << "EOF" \n\
 EOF' >> /root/.bashrc && \
     cd servertools/src/frontend && \
     npm install bootstrap react-bootstrap react-router-dom && \
-    npm run-script build && \
-    python3 /root/servertools/src/backend/manage.py runserver 0.0.0.0:8000
+    npm run-script build
 
-ENTRYPOINT /usr/sbin/nginx -g 'daemon off;' -c /etc/nginx/nginx.conf
+ENTRYPOINT ["/root/entrypoint.sh"]
