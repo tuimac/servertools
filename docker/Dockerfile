@@ -29,6 +29,10 @@ cat << "EOF" \n\
  _\ \/ _// , _/ |/ / _// , _/___// / / /_/ / /_/ / /___\ \  \n\
 /___/___/_/|_||___/___/_/|_|    /_/  \____/\____/____/___/  \n\
                                                             \n\
-EOF' >> /root/.bashrc
+EOF' >> /root/.bashrc && \
+    cd servertools/src/frontend && \
+    npm install && \
+    npm build && \
+    cp -r build/* /root/servertools/src/backend/template/
 
 CMD ["python3", "/root/servertools/src/backend/manage.py", "runserver", "0.0.0.0:80"]
