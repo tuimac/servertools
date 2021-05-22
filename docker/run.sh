@@ -2,7 +2,7 @@
 
 # Change variables below if you need
 ##############################
-NAME="httptracker"
+NAME="servertools"
 DOCKERHUBUSER="tuimac"
 IMAGE=${DOCKERHUBUSER}/${NAME}
 ##############################
@@ -10,7 +10,8 @@ IMAGE=${DOCKERHUBUSER}/${NAME}
 function runContainer(){
     docker run -itd --name ${NAME} \
             -h ${NAME} \
-            -p "80:8000" \
+            -p "80:80" \
+            -p "3000:3000" \
             ${NAME}
 }
 
