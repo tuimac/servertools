@@ -33,6 +33,6 @@ EOF' >> /root/.bashrc && \
     cd servertools/src/frontend && \
     npm install && \
     npm build && \
-    cp -r build/* /root/servertools/src/backend/template/
+    cp -r build/* /root/servertools/src/backend/templates/
 
 CMD ["python3", "/root/servertools/src/backend/manage.py", "runserver", "0.0.0.0:80"]
