@@ -1,6 +1,6 @@
 # Tracking http requests
 
-[![CircleCI](https://circleci.com/gh/tuimac/httptracker.svg?style=shield)](https://circleci.com/gh/tuimac/httptracker)
+[![CircleCI](https://circleci.com/gh/tuimac/servertools.svg?style=shield)](https://circleci.com/gh/tuimac/servertools)
 
 This repository is small web application to get information from host server or container itself.
 You can track the http accesses to each container or each host Server by this service.
@@ -27,39 +27,39 @@ There are three ways to deploy this application. This program need root privileg
 First, `git clone` like below
 (Example)
 ```
-$ git clone https://github.com/tuimac/httptracker.git
-$ cd httptracker/httptracker
-$ sudo python3 manage.py runserver 0.0.0.0:8000
+$ git clone https://github.com/tuimac/servertools.git
+$ cd servertools/servertools
+$ sudo python3 manage.py runserver 0.0.0.0:80
 ```
 
 Second, you can use the docker image I created.
 (Example)
 ```
-$ docker pull tuimac/httptracker:latest
-$ docker run -itd --name httptracker -p 8000:8000 tuimac/httptracker:latest
+$ docker pull tuimac/servertools:latest
+$ docker run -itd --name servertools -p 80:80 tuimac/servertools:latest
 ```
 
 Third, use pip3 to install package to your python3 module directory and
 create execution command. This program need root privilege.
 (Example)
 ```
-$ pip3 install git+https://github.com/tuimac/httptracker.git
-$ sudo httptracker -m start
+$ pip3 install git+https://github.com/tuimac/servertools.git
+$ sudo servertools -m start
 ```
-Help of httptracker below:
+Help of servertools below:
 
 ```
-usage: httptracker [-h] -m MODE [-p PORT] [-i IPADDRESS]
+usage: servertools [-h] -m MODE [-p PORT] [-i IPADDRESS]
 
 Track HTTP request to the end of the host. 
-ex) httptracker --mode start -p 80
+ex) servertools --mode start -p 80
 
 optional arguments:
   -h, --help            show this help message and exit
-  -m MODE, --mode MODE  [Required]Select modes which are 'start', 'restart', 'stop' to execute httptracker.
-  -p PORT, --port PORT  [Optional]Direct port which httptracker process use. Default is 8000/tcp.
+  -m MODE, --mode MODE  [Required]Select modes which are 'start', 'restart', 'stop' to execute servertools.
+  -p PORT, --port PORT  [Optional]Direct port which servertools process use. Default is 80/tcp.
   -i IPADDRESS, --ipaddress IPADDRESS
-                        [Optional]Direct listen ip address which httptracker process use. Default is 0.0.0.0 .
+                        [Optional]Direct listen ip address which servertools process use. Default is 0.0.0.0 .
 ```
 Here is option for deploying this package to AWS EC2. Copy it and paste it to UserData section.
 
@@ -68,8 +68,8 @@ Here is option for deploying this package to AWS EC2. Copy it and paste it to Us
 
 yum update -y
 yum install -y python3 git
-pip3 install git+https://github.com/tuimac/httptracker.git
-httptracker -m start -p 80
+pip3 install git+https://github.com/tuimac/servertools.git
+servertools -m start -p 80
 ```
 ## How to uninstall
 
@@ -77,15 +77,15 @@ It's easy if you use `pip3`.
 This program deployed to the location need root privilege.
 
 ```
-$ sudo pip3 uninstall httptracker
+$ sudo pip3 uninstall servertools
 ```
 
 ## Authors
 
 * **Kento Kashiwagi** - [tuimac](https://github.com/tuimac)
 
-If you have some opinion and find bugs, please post [here](https://github.com/tuimac/httptracker/issues).
+If you have some opinion and find bugs, please post [here](https://github.com/tuimac/servertools/issues).
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/tuimac/httptracker/LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/tuimac/servertools/LICENSE.md) file for details.
