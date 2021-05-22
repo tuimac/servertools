@@ -1,5 +1,4 @@
 import React from 'react';
-import { logout, isLogin } from '../utils';
 import { Redirect } from 'react-router-dom';
 import {
   Button,
@@ -12,26 +11,18 @@ class Home extends React.Component {
   constructor() {
     super();
     this.state = {
-      isLogin: isLogin()
+      name: ''
     };
-  }
-
-  handleLogout = () => {
-    logout();
-    this.setState(
-      { isLogin: false }
-    );
   }
 
   render() {
     return(
       <div>
         <Navbar bg="primary" variant="dark">
-          <Navbar.Brand href="/">S3 Uploader</Navbar.Brand>
+          <Navbar.Brand href="/">Server Tools</Navbar.Brand>
           <Nav className="mr-auto">
-            <Nav.Link href="/upload">S3Upload</Nav.Link>
+            <Nav.Link href="/runcommand">Runcommad</Nav.Link>
           </Nav>
-          { this.state.isLogin ? <Button variant="danger" onClick={() => this.handleLogout()}>LogOut</Button> : <Redirect to="/login" />}
         </Navbar>
       </div>
     );

@@ -31,7 +31,7 @@ cat << "EOF" \n\
                                                             \n\
 EOF' >> /root/.bashrc && \
     cd servertools/src/frontend && \
-    npm install
+    npm install bootstrap react-bootstrap react-router-dom
     #npm run-script build && \
     #cp -r build/* /root/servertools/src/backend/templates/
 
