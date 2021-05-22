@@ -2,7 +2,7 @@ FROM alpine:latest
 
 WORKDIR /root
 
-EXPOSE 8000
+EXPOSE 80
 
 ADD requirements.txt /root/requirements.txt
 
@@ -17,4 +17,4 @@ RUN apk update && \
     curl -L https://raw.githubusercontent.com/tuimac/tools/master/linux/bashrc/.bashrc_node_docker -o /root/.bashrc && \
     git clone https://github.com/tuimac/httptracker
 
-CMD ["python3", "/root/httptracker/httptracker/manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["python3", "/root/httptracker/src/backend/manage.py", "runserver", "0.0.0.0:80"]
