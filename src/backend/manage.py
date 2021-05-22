@@ -5,7 +5,7 @@ import sys
 import servertools
 
 def main():
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'httptracker.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'servertools.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
