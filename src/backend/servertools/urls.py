@@ -18,8 +18,8 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path("ec2/", include("ec2.urls")),
-    path("host/", include("host.urls")),
-    path("traceroute/", include("traceroute.urls")),
-    path("httpreq/", include("httpreq.urls"))
+    path("api/ec2/", include("ec2.urls")),
+    path("api/host/", include("host.urls")),
+    path("api/traceroute/", include("traceroute.urls")),
+    path("api/httpreq/", include("httpreq.urls"))
 ]
