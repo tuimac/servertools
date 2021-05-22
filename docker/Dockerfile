@@ -5,10 +5,11 @@ WORKDIR /root
 EXPOSE 80
 
 ADD requirements.txt /root/requirements.txt
+ADD nginx.conf /etc/nginx/nginx.conf
 
 RUN apk update && \
     apk upgrade && \
-    apk add --no-cache bash git icu-dev ncurses icu-libs vim python3 py3-pip nodejs nodejs-npm curl jq tree && \
+    apk add --no-cache bash git icu-dev ncurses icu-libs vim python3 py3-pip nodejs nodejs-npm curl jq tree nginx && \
     mkdir /etc/vim/backup && \
     mkdir /etc/vim/undo && \
     pip3 install -r requirements.txt && \
@@ -33,6 +34,6 @@ EOF' >> /root/.bashrc && \
     cd servertools/src/frontend && \
     npm install bootstrap react-bootstrap react-router-dom && \
     npm run-script build && \
-    cp -r build/* /root/servertools/src/backend/templates/
+    python3 /root/servertools/src/backend/manage.py runserver 0.0.0.0:8000
 
-CMD ["python3", "/root/servertools/src/backend/manage.py", "runserver", "0.0.0.0:80"]
+ENTRYPOINT /usr/sbin/nginx -g 'daemon off;' -c /etc/nginx/nginx.conf
