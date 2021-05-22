@@ -19,6 +19,16 @@ RUN apk update && \
     git config --global user.email "tuimac.devadm01@gmail.com" && \
     git config --global user.name "tuimac" && \
     curl -L https://raw.githubusercontent.com/tuimac/tools/master/git/hook/servertools/pre-commit -o servertools/.git/hooks/pre-commit && \
-    chmod +x servertools/.git/hooks/pre-commit
+    chmod +x servertools/.git/hooks/pre-commit && \
+    echo $'\n\
+echo -en "\e[1m\e[34m" \n\
+cat << "EOF" \n\
+\n\
+   ___________ _   _________     __________  ____  __   ____\n\
+  / __/ __/ _ \ | / / __/ _ \___/_  __/ __ \/ __ \/ /  / __/\n\
+ _\ \/ _// , _/ |/ / _// , _/___// / / /_/ / /_/ / /___\ \  \n\
+/___/___/_/|_||___/___/_/|_|    /_/  \____/\____/____/___/  \n\
+                                                            \n\
+EOF' >> /root/.bashrc
 
 CMD ["python3", "/root/servertools/src/backend/manage.py", "runserver", "0.0.0.0:80"]
