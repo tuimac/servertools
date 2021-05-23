@@ -14,7 +14,7 @@ class Runcommand(Thread):
         self.queue = queue
         self.command = command
 
-    def run(command):
+    def run(self):
         try:
             process = subprocess.Popen(self.command.split(), stdout=subprocess.PIPE)
             while True:
@@ -43,10 +43,9 @@ class RuncommandConsumer(WebsocketConsumer):
             runcommand.start()
             while True:
                 result = queue.get()
-                logger.info(result)
                 if result == '': break
                 self.send(text_data=json.dumps({
-                    'result': result
+                    'result': result.decode()
                 }))
             runcommand.join()
         except:
