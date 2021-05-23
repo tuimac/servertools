@@ -19,13 +19,16 @@ class Runcommand(Thread):
             process = subprocess.Popen(self.command.split(), stdout=subprocess.PIPE)
             while True:
                 output = process.stdout.readline()
+                err = process.stderr.readline()
                 if output:
                     self.queue.put(output.strip().decode())
+                elif err:
+                    self.queue.put(err.strip().decode())
                 else:
                     self.queue.put(0xff)
-                    logger.error('hello')
                     break
         except:
+            self.queue.put(0xff)
             logger.error(traceback.format_exc())
 
 class RuncommandConsumer(WebsocketConsumer):
@@ -50,4 +53,5 @@ class RuncommandConsumer(WebsocketConsumer):
                 }))
             runcommand.join()
         except:
+            runcommnd.join()
             logger.error(traceback.format_exc())

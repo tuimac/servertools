@@ -30,6 +30,10 @@ class Runcommand extends React.Component {
     term.open(this.terminal);
     const url = 'ws://' + window.location.hostname + API_URL + '/runcommand'
     const socket = new WebSocket(url);
+    socket.addEventListener("message", (response) => {
+      term.write("$ " + response.data.result + "\r\n");
+      term.write("$ ");
+    });
     term.write('$ ');
     let current_line = "";
     let cursor = 0;
@@ -37,6 +41,7 @@ class Runcommand extends React.Component {
       switch(data.domEvent.key) {
         case "Enter":
           term.write("\r\n");
+          console.log(current_line);
           if(current_line) {
             socket.send(JSON.stringify({
               command: current_line
