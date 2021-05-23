@@ -16,7 +16,7 @@ class Runcommand(Thread):
 
     def run(self):
         try:
-            process = subprocess.Popen(self.command.split(), stdout=subprocess.PIPE)
+            process = subprocess.Popen(self.command.split(), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             while True:
                 output = process.stdout.readline()
                 err = process.stderr.readline()
