@@ -12,7 +12,6 @@ class RuncommandConsumer(WebsocketConsumer):
         text_data_json = json.loads(text_data)
         command = text_data_json['command']
 
-
         self.send(text_data=json.dumps({
-            'result': commadn
+            'result': command
         }))
