@@ -2,8 +2,9 @@ FROM alpine:latest
 
 WORKDIR /root
 
-expose 80
-expose 8000
+EXPOSE 80
+EXPOSE 8000
+EXPOSE 6379
 
 ADD requirements.txt /root/requirements.txt
 ADD nginx.conf /etc/nginx/nginx.conf
@@ -11,7 +12,7 @@ ADD entrypoint.sh /root/entrypoint.sh
 
 RUN apk update && \
     apk upgrade && \
-    apk add --no-cache bash git icu-dev ncurses icu-libs vim python3 python3-dev py3-pip nodejs nodejs-npm curl tree nginx cargo rust gcc openssl-dev build-base libffi-dev && \
+    apk add --no-cache bash git icu-dev ncurses icu-libs vim python3 python3-dev py3-pip nodejs nodejs-npm curl tree nginx cargo rust gcc openssl-dev build-base libffi-dev redis && \
     mkdir /etc/vim/backup && \
     mkdir /etc/vim/undo && \
     pip3 install -r requirements.txt && \
