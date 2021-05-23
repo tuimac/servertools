@@ -3,8 +3,8 @@ jobs:
   test-image:
     machine: true
     environment:
-      - IMAGE: tuimac/httptracker
-      - NAME: httptracker
+      - IMAGE: tuimac/servertools
+      - NAME: servertools
       - PORT: 80
     steps:
       - checkout
@@ -31,7 +31,7 @@ jobs:
       image: ubuntu-2004:202010-01
     environment:
       - BUILDX: https://github.com/docker/buildx/releases/download/v0.5.1/buildx-v0.5.1.linux-amd64
-      - IMAGE: tuimac/httptracker
+      - IMAGE: tuimac/servertools
     steps:
       - checkout
       - run:
@@ -58,7 +58,7 @@ jobs:
           command: docker buildx build --platform linux/amd64,linux/arm64 -t ${IMAGE} --push .
 workflows:
   version: 2.1
-  httptracker-pipeline:
+  servertools-pipeline:
     jobs:
       - test-image
       - push-image:
