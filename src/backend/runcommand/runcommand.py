@@ -1,5 +1,31 @@
 import json
 from channels.generic.websocket import WebsocketConsumer
+from queue import Queue
+from threading import Thread
+import logging
+import traceback
+import subprocess
+
+logger = logging.getLogger("django")
+
+class Runcommand(Thread):
+    def __init__(self, queue, command):
+        Thread.__init__(self)
+        self.queue = queue
+        self.command = command
+
+    def run(command):
+        try:
+            process = subprocess.Popen(self.command.split(), stdout=subprocess.PIPE)
+            while True:
+                output = process.stdout.readline()
+                if output == '' and process.poll() is not None:
+                    self.queue.put('')
+                    break
+                if output:
+                    self.queue.put(output.strip())
+        except:
+            logger.error(traceback.format_exc())
 
 class RuncommandConsumer(WebsocketConsumer):
     def connect(self):
@@ -9,9 +35,19 @@ class RuncommandConsumer(WebsocketConsumer):
         pass
 
     def receive(self, text_data):
-        text_data_json = json.loads(text_data)
-        command = text_data_json['command']
-
-        self.send(text_data=json.dumps({
-            'result': command
-        }))
+        try:
+            text_data_json = json.loads(text_data)
+            command = text_data_json['command']
+            queue = Queue()
+            runcommand = Runcommand(queue, command)
+            runcommand.start()
+            while True:
+                result = queue.get()
+                logger.info(result)
+                if result == '': break
+                self.send(text_data=json.dumps({
+                    'result': result
+                }))
+            runcommand.join()
+        except:
+            logger.error(traceback.format_exc())
