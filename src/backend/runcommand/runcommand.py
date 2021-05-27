@@ -25,14 +25,14 @@ class Runcommand(Thread):
                 elif err:
                     self.queue.put(err.strip().decode())
                 else:
-                    self.queue.put(0xff)
+                    self.queue.put(False)
                     break
         except FileNotFoundError:
-            self.queue.put('bash:' + self.command + ': command not found')
-            self.queue.put(0xff)
+            self.queue.put('bash: ' + self.command + ': command not found')
+            self.queue.put(False)
             logger.error(traceback.format_exc())
         except:
-            self.queue.put(0xff)
+            self.queue.put(False)
             logger.error(traceback.format_exc())
 
 class RuncommandConsumer(WebsocketConsumer):
@@ -51,10 +51,10 @@ class RuncommandConsumer(WebsocketConsumer):
             runcommand.start()
             while True:
                 result = queue.get()
-                if result == 0xff: break
                 self.send(text_data=json.dumps({
                     'result': result
                 }))
+                if result is False: break
             runcommand.join()
         except:
             runcommnd.join()
