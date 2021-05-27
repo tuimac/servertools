@@ -27,6 +27,10 @@ class Runcommand(Thread):
                 else:
                     self.queue.put(0xff)
                     break
+        except FileNotFoundError:
+            self.queue.put('bash:' + self.command + ': command not found')
+            self.queue.put(0xff)
+            logger.error(traceback.format_exc())
         except:
             self.queue.put(0xff)
             logger.error(traceback.format_exc())

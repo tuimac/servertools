@@ -25,14 +25,14 @@ class Runcommand extends React.Component {
 
   componentDidMount() {
     var term = new Terminal({
-      cursorBlink: true
+      cursorBlink: true,
+
     });
     term.open(this.terminal);
     const url = 'ws://' + window.location.hostname + API_URL + '/runcommand'
     const socket = new WebSocket(url);
     socket.addEventListener("message", (response) => {
-      term.write("$ " + response.data.result + "\r\n");
-      term.write("$ ");
+      term.write(JSON.parse(response.data).result + "\r\n");
     });
     term.write('$ ');
     let current_line = "";
