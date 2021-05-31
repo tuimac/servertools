@@ -24,14 +24,20 @@ class Runcommand extends React.Component {
   }
 
   componentDidMount() {
+    const url = 'ws://' + window.location.hostname + API_URL + '/runcommand'
+    const socket = new WebSocket(url);
+    let currentInput = '';
+    let inputHistory = [];
+    let cursor = 0;
+    let historyIndex = 0;
+
     var term = new Terminal({
       cursorBlink: true,
       cursorStyle: 'block',
       scrollback: 100
     });
     term.open(this.terminal);
-    const url = 'ws://' + window.location.hostname + API_URL + '/runcommand'
-    const socket = new WebSocket(url);
+    term.write('$ ');
     socket.addEventListener('message', (response) => {
       response = JSON.parse(response.data).result
       if(response === false) {
@@ -40,11 +46,7 @@ class Runcommand extends React.Component {
         term.write(response + '\r\n');
       }
     });
-    term.write('$ ');
-    let currentInput = '';
-    let inputHistory = [];
-    let cursor = 0;
-    let historyIndex = 0;
+
   	term.onKey((data) => {
       console.log(data.domEvent.key); 
       switch(data.domEvent.key) {
@@ -58,7 +60,6 @@ class Runcommand extends React.Component {
             term.write('\r\n');
             term.write('$ ');
           }
-          cursor = 0;
           historyIndex++;
           inputHistory.push(currentInput);
           currentInput = '';
@@ -66,13 +67,18 @@ class Runcommand extends React.Component {
         case 'Backspace':
           currentInput = currentInput.substring(0, currentInput.length - 1);
           console.log(currentInput);
-          term.write(currentInput);
+          term.write('\b \b');
+          break;
         case 'ArrowUp':
-          if(historyIndex >= 0) {
+          if(historyIndex > 0) {
             historyIndex--;
             currentInput = inputHistory[historyIndex];
+            term.write('');
+            term.write('\r');
+            term.write('$ ')
             term.write(currentInput);
           }
+          break;
         default:
           if (cursor < 120) {
             cursor += 1;
