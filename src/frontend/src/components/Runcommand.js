@@ -26,42 +26,57 @@ class Runcommand extends React.Component {
   componentDidMount() {
     var term = new Terminal({
       cursorBlink: true,
-
+      cursorStyle: 'block',
+      scrollback: 100
     });
     term.open(this.terminal);
     const url = 'ws://' + window.location.hostname + API_URL + '/runcommand'
     const socket = new WebSocket(url);
-    socket.addEventListener("message", (response) => {
+    socket.addEventListener('message', (response) => {
       response = JSON.parse(response.data).result
       if(response === false) {
-        term.write('\r' + '$ ');
+        term.write('\r\n' + '$ ');
       } else {
-        term.write(response + "\r\n");
+        term.write(response + '\r\n');
       }
     });
     term.write('$ ');
-    let current_line = "";
+    let currentInput = '';
+    let inputHistory = [];
     let cursor = 0;
+    let historyIndex = 0;
   	term.onKey((data) => {
+      console.log(data.domEvent.key); 
       switch(data.domEvent.key) {
-        case "Enter":
-          term.write("\r\n");
-          console.log(current_line);
-          if(current_line) {
+        case 'Enter':
+          term.write('\r\n');
+          if(currentInput) {
             socket.send(JSON.stringify({
-              command: current_line
+              command: currentInput
             }));
           } else {
-            term.write("\r\n");
-            term.write("$ ");
+            term.write('\r\n');
+            term.write('$ ');
           }
           cursor = 0;
-          current_line = "";
+          historyIndex++;
+          inputHistory.push(currentInput);
+          currentInput = '';
           break;
+        case 'Backspace':
+          currentInput = currentInput.substring(0, currentInput.length - 1);
+          console.log(currentInput);
+          term.write(currentInput);
+        case 'ArrowUp':
+          if(historyIndex >= 0) {
+            historyIndex--;
+            currentInput = inputHistory[historyIndex];
+            term.write(currentInput);
+          }
         default:
           if (cursor < 120) {
             cursor += 1;
-            current_line += data.key;
+            currentInput += data.key;
             term.write(data.key);
           }
           break;
@@ -73,8 +88,8 @@ class Runcommand extends React.Component {
     return (
       <>
         <div>
-          <div style={{padding:'10px'}}>
-            <div ref={ref=>this.terminal = ref}></div>
+          <div style={{ padding:'10px' }}>
+            <div ref={ ref=>this.terminal = ref }></div>
           </div>
         </div>
       </>
