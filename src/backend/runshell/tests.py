@@ -8,28 +8,18 @@ import traceback
 from threading import Thread
 import time
 
-def stderr(process):
-    while True:
-        print(p.stderr.readline())
-
-def stdout(process):
-    while True:
-        print(p.stdout.readline())
-
 if __name__ == "__main__":
+    master, slave = os.openpty()
+    cmd = '/bin/bash ' + os.ttyname(slave)
     p = subprocess.Popen(
-        ['/bin/bash'],
-        shell = False,
+        cmd.split(),
         stdin = subprocess.PIPE,
         stdout = subprocess.PIPE,
-        stderr = subprocess.PIPE,
+        stderr = subprocess.PIPE
     )
-    out = Thread(target=stdout, args=(p, ))
-    out.setDaemon(True)
-    out.start
-    err = Thread(target=stderr, args=(p, ))
-    err.setDaemon(True)
-    err.start
-    time.sleep(2)
     p.stdin.write('cd /\n'.encode())
+    p.stdin.close()
+    print(p.stdout.readline())
     p.stdin.write('ls\n'.encode())
+    print(p.stdout.readline())
+    print(p.stderr.readline())
