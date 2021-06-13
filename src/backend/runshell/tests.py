@@ -18,8 +18,5 @@ if __name__ == "__main__":
         stderr = subprocess.PIPE
     )
     p.stdin.write('cd /\n'.encode())
-    p.stdin.close()
-    print(p.stdout.readline())
     p.stdin.write('ls\n'.encode())
-    print(p.stdout.readline())
-    print(p.stderr.readline())
+    os.read(slave, 10000)
