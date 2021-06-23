@@ -12,7 +12,7 @@ ADD entrypoint.sh /root/entrypoint.sh
 
 RUN apk update && \
     apk upgrade && \
-    apk add --no-cache bash git icu-dev ncurses icu-libs vim python3 python3-dev py3-pip nodejs nodejs-npm curl tree nginx cargo rust gcc openssl-dev build-base libffi-dev redis && \
+    apk add --no-cache bash git icu-dev ncurses icu-libs vim python3 python3-dev py3-pip nodejs npm curl tree nginx cargo rust gcc openssl-dev build-base libffi-dev redis && \
     mkdir /etc/vim/backup && \
     mkdir /etc/vim/undo && \
     pip3 install -r requirements.txt && \
