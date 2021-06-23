@@ -36,6 +36,6 @@ cat << "EOF" \n\
                                                             \n\
 EOF' >> /root/.bashrc && \
     cd servertools/src/frontend && \
-    npm install bootstrap react-bootstrap react-router-dom
+    npm install
 
 ENTRYPOINT ["/root/entrypoint.sh"]

@@ -1,10 +1,6 @@
 import React from 'react';
 import { Terminal } from 'xterm';
-import {
-  API_URL
-} from '../environment';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import { API_URL } from '../environment';
 
 class Runcommand extends React.Component {
   

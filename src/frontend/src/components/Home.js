@@ -1,7 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
 import {
-  Button,
   Nav,
   Navbar,
 } from 'react-bootstrap';
