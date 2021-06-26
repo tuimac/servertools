@@ -6,17 +6,6 @@ class Runcommand extends React.Component {
   
   constructor() {
     super();
-    this.state = {
-      command: '',
-    };
-    this.handleChange = this.handleChange.bind(this);
-    console.log(window.location.hostname);
-  }
-
-  handleChange({ target }) {
-    this.setState({
-      [target.name]: target.value
-    });
   }
 
   componentDidMount() {
@@ -27,11 +16,11 @@ class Runcommand extends React.Component {
     let cursor = 0;
     let historyIndex = 0;
 
-    var term = new Terminal({
-      cursorBlink: true,
-      cursorStyle: 'block',
-      scrollback: 100
-    });
+    var term = new Terminal();
+    term.setOption('theme', {
+      background: '#202B33',
+      foreground: '#F5F8FA'
+    })
     term.open(this.terminal);
     term.write('$ ');
     socket.addEventListener('message', (response) => {
@@ -89,11 +78,7 @@ class Runcommand extends React.Component {
   render() {
     return (
       <>
-        <div>
-          <div style={{ padding:'10px' }}>
-            <div ref={ ref=>this.terminal = ref }></div>
-          </div>
-        </div>
+        <div ref={ id => this.terminal = id }></div>
       </>
     );
   };
