@@ -1,5 +1,7 @@
 import React from 'react';
 import { Terminal } from 'xterm';
+import { FitAddon } from 'xterm-addon-fit';
+import 'xterm/css/xterm.css';
 import { API_URL } from '../environment';
 
 class Runcommand extends React.Component {
@@ -16,20 +18,19 @@ class Runcommand extends React.Component {
     let cursor = 0;
     let historyIndex = 0;
 
-    var term = new Terminal();
-    term.setOption('theme', {
+    var term = new Terminal({
       background: '#202B33',
-      foreground: '#F5F8FA'
-    })
+      foreground: '#F5F8FA',
+      cursorStyle: 'block',
+      fontSize: 16,
+      cursorBlink: true
+    });
     term.open(this.terminal);
     term.write('$ ');
     socket.addEventListener('message', (response) => {
       response = JSON.parse(response.data).result
-      if(response === false) {
-        term.write('\r\n' + '$ ');
-      } else {
-        term.write(response + '\r\n');
-      }
+      term.write(response + '\r\n');
+      term.write('$ ');
     });
 
   	term.onKey((data) => {
