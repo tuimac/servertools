@@ -1,4 +1,4 @@
-# Tracking http requests
+# Information of HTTP server
 
 [![CircleCI](https://circleci.com/gh/tuimac/servertools.svg?style=shield)](https://circleci.com/gh/tuimac/servertools)
 
