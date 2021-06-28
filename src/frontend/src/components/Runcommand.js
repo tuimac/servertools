@@ -1,6 +1,5 @@
 import React from 'react';
 import { Terminal } from 'xterm';
-import { FitAddon } from 'xterm-addon-fit';
 import 'xterm/css/xterm.css';
 import { API_URL } from '../environment';
 
@@ -25,6 +24,7 @@ class Runcommand extends React.Component {
       fontSize: 16,
       cursorBlink: true
     });
+    
     term.open(this.terminal);
     term.write('$ ');
     socket.addEventListener('message', (response) => {
