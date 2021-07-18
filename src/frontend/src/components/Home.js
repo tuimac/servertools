@@ -3,7 +3,6 @@ import {
   Nav,
   Navbar,
 } from 'react-bootstrap';
-import SideBar from './SideBar';
 
 class Home extends React.Component {
 

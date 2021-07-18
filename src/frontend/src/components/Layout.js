@@ -2,6 +2,8 @@ import React from 'react';
 import {
   Nav,
   Navbar,
+  Button,
+  Offcanvas
 } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
@@ -10,33 +12,31 @@ class Layout extends React.Component {
   constructor() {
     super();
     this.state = {
-      name: ''
+      open: false
     };
   }
 
+
+
   render() {
+    const [show, setShow] = useState(false)
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     return(
       <div>
         <Navbar bg="primary" variant="dark">
+          <Button variant="primary" onClick={ handleShow }></Button>
           <Navbar.Brand href="/">Server Tools</Navbar.Brand>
-          <Nav className="mr-auto">
-            <Nav.Link href="/runcommand">Runcommad</Nav.Link>
-          </Nav>
         </Navbar>
-        <ul class="list-unstyled components">
-          <p>Dummy Heading</p>
-          <li class="active">
-            <a href="/">Home</a>
-            <ul class="collapse list-unstyled" id="homeSubmenu">
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="/runcommand">Runcommand</a>
-          </li>
-        </ul>
+        <Offcanvas show={ show } onHide={ handleClose }>
+          <Offcanvas.Body>
+            <Nav defaultActiveKey="/home" className="flex-column">
+              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/runcommand">Runcommand</Nav.Link>
+            </Nav>
+          </Offcanvas.Body>
+        </Offcanvas>
       </div>
     );
   };

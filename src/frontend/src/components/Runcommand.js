@@ -28,6 +28,7 @@ class Runcommand extends React.Component {
     term.open(this.terminal);
     term.write('$ ');
     socket.addEventListener('message', (response) => {
+      console.log(response);
       response = JSON.parse(response.data).result
       term.write(response + '\r\n');
       term.write('$ ');
