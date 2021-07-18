@@ -5,7 +5,7 @@ import {
 } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
-class SideBar extends React.Component {
+class Layout extends React.Component {
 
   constructor() {
     super();
@@ -42,4 +42,4 @@ class SideBar extends React.Component {
   };
 }
 
-export default SideBar;
+export default Layout;

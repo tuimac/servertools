@@ -3,14 +3,14 @@ import './App.css';
 import { BrowserRouter, Switch, Redirect, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Runcommand from './components/Runcommand';
-import SideBar from './components/SideBar';
+import Layout from './components/Layout';
 
 class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
         <div>
-          <SideBar></SideBar>
+          <Layout></Layout>
           <div>
             <Switch>
               <Route exact path="/">
