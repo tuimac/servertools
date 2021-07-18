@@ -3,40 +3,29 @@ import {
   Nav,
   Navbar,
   Button,
-  Offcanvas
+  Container,
+  Row,
+  Col
 } from 'react-bootstrap';
 import { Link } from "react-router-dom";
+import classNames from "classnames";
 
 class Layout extends React.Component {
 
-  constructor() {
-    super();
-    this.state = {
-      open: false
-    };
-  }
-
-
-
   render() {
-    const [show, setShow] = useState(false)
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
     return(
       <div>
-        <Navbar bg="primary" variant="dark">
-          <Button variant="primary" onClick={ handleShow }></Button>
+        <Navbar bg="dark" variant="dark">
           <Navbar.Brand href="/">Server Tools</Navbar.Brand>
-        </Navbar>
-        <Offcanvas show={ show } onHide={ handleClose }>
-          <Offcanvas.Body>
-            <Nav defaultActiveKey="/home" className="flex-column">
+          <Nav variant="pills">
+            <Nav.Item>
               <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/runcommand">Runcommand</Nav.Link>
-            </Nav>
-          </Offcanvas.Body>
-        </Offcanvas>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/runcommand">Runcommmand</Nav.Link>
+            </Nav.Item>
+          </Nav>
+        </Navbar>
       </div>
     );
   };
