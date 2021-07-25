@@ -15,11 +15,12 @@ class EC2 extends React.Component {
   }
 
   componentDidMount() {
-    const url = window.location.origin + process.env.BACKEND_URL + '/ec2'
+    const url = window.location.origin + '/api/ec2'
     fetch(url)
       .then(res => res.json())
       .then(
         (result) => {
+          console.log(url);
           console.log(result);
           this.setState({
             result: result,
