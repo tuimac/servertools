@@ -20,32 +20,23 @@ class EC2 extends React.Component {
       .then(res => res.json())
       .then(
         (result) => {
+          console.log(result);
           this.setState({
             result: result,
           });
         },
         (error) => {
           this.setState({
-            isLoaded: true,
-            error
+            result: error
           });
         }
       )
   }
 
   render() {
+    const { results } = this.state;
     return(
       <>
-        <div>
-          <Card style={{ width: '25rem' }} className="text-center">
-            <Card.Header>
-              <h1>AWS Information</h1>
-            </Card.Header>
-            <Card.Body>
-              
-            </Card.Body>
-          </Card>          
-        </div>
       </>
     );
   };

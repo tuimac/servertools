@@ -4,6 +4,7 @@ import {
   Navbar,
   Card
 } from 'react-bootstrap';
+import EC2 from './EC2';
 
 class Home extends React.Component {
 
@@ -23,7 +24,7 @@ class Home extends React.Component {
               <h1>AWS Information</h1>
             </Card.Header>
             <Card.Body>
-              
+              <EC2 />
             </Card.Body>
           </Card>          
         </div>
