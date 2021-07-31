@@ -1,8 +1,9 @@
 import React from 'react';
 import {
-  Nav,
-  Navbar,
-  Card
+  Card,
+  Container,
+  Row,
+  Col
 } from 'react-bootstrap';
 import EC2 from './EC2';
 
@@ -18,16 +19,20 @@ class Home extends React.Component {
   render() {
     return(
       <>
-        <div>
-          <Card className="text-center">
-            <Card.Header>
-              <h1>AWS Information</h1>
-            </Card.Header>
-            <Card.Body>
-              <EC2 />
-            </Card.Body>
-          </Card>          
-        </div>
+        <Container>
+          <Row>
+            <Col>
+              <Card className="text-center">
+                <Card.Header>
+                  <h1>AWS Information</h1>
+                </Card.Header>
+                <Card.Body>
+                  <EC2 />
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
       </>
     );
   };

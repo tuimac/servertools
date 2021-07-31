@@ -9,38 +9,14 @@ class App extends React.Component {
   
   constructor(props) {
     super(props);
-    this.state = {
-      isOpen: false,
-    };
-
-    this.previousWidth = -1;
   }
-
-  updateWidth() {
-    const width = window.innerWidth;
-    const widthLimit = 576;
-    this.previousWidth = width;
-  }
-
-  componentDidMount() {
-    this.updateWidth();
-    window.addEventListener("resize", this.updateWidth.bind(this));
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updateWidth.bind(this));
-  }
-
-  toggle = () => {
-    this.setState({ isOpen: !this.state.isOpen });
-  };
 
   render() {
     return (
 			<>
         <BrowserRouter>
           <div>
-            <Layout toggle={this.toggle} isOpen={this.state.isOpen} />
+            <Layout/>
             <div>
               <Switch>
                 <Route exact path="/">
