@@ -2,6 +2,7 @@ import React from 'react';
 import { Terminal } from 'xterm';
 import 'xterm/css/xterm.css';
 import { API_URL } from '../environment';
+import { Card } from 'react-bootstrap';
 
 class Runcommand extends React.Component {
   
@@ -80,7 +81,11 @@ class Runcommand extends React.Component {
   render() {
     return (
       <>
-        <div ref={ id => this.terminal = id }></div>
+        <Card className="text-center">
+          <Card.Body>
+            <div ref={ id => this.terminal = id }></div>
+          </Card.Body>
+        </Card>
       </>
     );
   };

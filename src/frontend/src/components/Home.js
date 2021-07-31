@@ -24,7 +24,17 @@ class Home extends React.Component {
             <Col>
               <Card className="text-center">
                 <Card.Header>
-                  <h1>AWS Information</h1>
+                  <h2>AWS Information</h2>
+                </Card.Header>
+                <Card.Body>
+                  <EC2 />
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col>
+              <Card className="text-center">
+                <Card.Header>
+                  <h2>AWS Information</h2>
                 </Card.Header>
                 <Card.Body>
                   <EC2 />
