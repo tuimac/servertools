@@ -4,7 +4,7 @@ import {
   Navbar,
   Card,
   Spinner,
-  ListGroup
+  Table
 } from 'react-bootstrap';
 
 class EC2 extends React.Component {
@@ -17,7 +17,7 @@ class EC2 extends React.Component {
   }
 
   componentDidMount() {
-    const url = window.location.origin + '/api/ec2'
+    const url = window.location.origin + '/api/ec2';
     fetch(url).then(res => res.json()).then(
       (result) => {
         this.setState({
@@ -29,7 +29,18 @@ class EC2 extends React.Component {
           result: error
         });
       }
-    )
+    );
+  }
+
+  createTable() {
+    const result = this.state.result;
+    console.log(result);
+    const table = [];
+
+    table.push(<Table striped bordered hover variant="dark"><tbody>);
+    table.push(</tbody></Table>);
+
+    return table;
   }
 
   render() {
@@ -40,15 +51,11 @@ class EC2 extends React.Component {
         </Spinner>
       )
     } else {
-      console.log(this.state);
-      const result = this.state.result;
-      for(let key in result) {
-        return(
-          <>
-            {key} {resuls[key]}
-          </>
-        );
-      }
+      return(
+        <>
+          { this.createTable() }
+        </>
+      )
     }
   };
 }
