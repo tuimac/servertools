@@ -15,7 +15,7 @@ class Layout extends React.Component {
   render() {
     return(
       <div>
-        <Navbar bg="dark" variant="dark">
+        <Navbar bg="primary" variant="light">
           <Navbar.Brand href="/">Server Tools</Navbar.Brand>
           <Nav variant="pills">
             <Nav.Item>
