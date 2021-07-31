@@ -19,7 +19,7 @@ class Home extends React.Component {
     return(
       <>
         <div>
-          <Card style={{ width: '25rem' }} className="text-center">
+          <Card className="text-center">
             <Card.Header>
               <h1>AWS Information</h1>
             </Card.Header>

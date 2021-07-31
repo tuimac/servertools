@@ -33,11 +33,16 @@ class EC2 extends React.Component {
   }
 
   createTable() {
-    const result = this.state.result;
+    const result = this.state.result.InstanceIDDocument;
     console.log(result);
     const table = [];
 
-    table.push(<Table striped bordered hover variant="dark"><tbody>);
+    table.push(<Table striped bordered hover variant="dark" responsive="sm" responsive="md" responsive="lg" responsive="xl"><tbody>);
+    {
+      Object.keys(result).map(key =>
+        <tr><td>{key}</td><td>{result[key]}</td></tr>
+      )
+    }
     table.push(</tbody></Table>);
 
     return table;
