@@ -29,8 +29,6 @@ class Host:
             self.response["IPAddress"] = socket.gethostbyname(socket.gethostname())
             self.response["Hostname"] = socket.gethostname()
             self.response["CPU_cores"] = cpu_count()
-            self.command("touch /test-mount/test")
-            self.response["ls"] = self.command("ls -al /test-mount")
             return self.response
         except:
             self.response["Traceback"] = traceback.format_exc().splitlines()[-1]

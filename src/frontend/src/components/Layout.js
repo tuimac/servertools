@@ -1,21 +1,15 @@
 import React from 'react';
 import {
   Nav,
-  Navbar,
-  Button,
-  Container,
-  Row,
-  Col
+  Navbar
 } from 'react-bootstrap';
-import { Link } from "react-router-dom";
-import classNames from "classnames";
 
 class Layout extends React.Component {
 
   render() {
     return(
       <div>
-        <Navbar bg="primary" variant="light">
+        <Navbar bg="dark" variant="dark">
           <Navbar.Brand href="/">Server Tools</Navbar.Brand>
           <Nav variant="pills">
             <Nav.Item>

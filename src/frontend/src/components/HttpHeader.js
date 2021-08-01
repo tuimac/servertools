@@ -4,7 +4,7 @@ import {
   Table
 } from 'react-bootstrap';
 
-class EC2 extends React.Component {
+class HttpHeader extends React.Component {
 
   constructor() {
     super();
@@ -14,7 +14,7 @@ class EC2 extends React.Component {
   }
 
   componentDidMount() {
-    const url = window.location.origin + '/api/ec2';
+    const url = window.location.origin + '/api/httpreq';
     fetch(url).then(res => res.json()).then(
       (result) => {
         this.setState({
@@ -30,7 +30,7 @@ class EC2 extends React.Component {
   }
 
   createTable() {
-    const result = this.state.result.InstanceIDDocument;
+    const result = this.state.result.header;
     console.log(result);
     const table = [];
 
@@ -62,4 +62,4 @@ class EC2 extends React.Component {
   };
 }
 
-export default EC2;
+export default HttpHeader;
