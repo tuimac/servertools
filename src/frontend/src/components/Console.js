@@ -2,7 +2,6 @@ import React from 'react';
 import { Terminal } from 'xterm';
 import 'xterm/css/xterm.css';
 import { API_URL } from '../environment';
-import { Card } from 'react-bootstrap';
 
 class Console extends React.Component {
   
