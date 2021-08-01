@@ -49,3 +49,7 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+#terminal-container .terminal.xterm {
+  height: 100%;
+}
