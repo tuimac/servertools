@@ -31,6 +31,9 @@ class Runcommand extends React.Component {
                 <h3>File Upload</h3>
               </Card.Header>
               <Card.Body>
+                <h5>This file will upload to '/tmp'.</h5>
+                <input type="file" onClick={this.handleSubmit}/><br/><br/>
+                <Button variant="dark">Upload</Button>
               </Card.Body>
             </Card>
           </Row>
