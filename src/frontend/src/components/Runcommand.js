@@ -6,10 +6,6 @@ import { Card } from 'react-bootstrap';
 
 class Runcommand extends React.Component {
   
-  constructor() {
-    super();
-  }
-
   componentDidMount() {
     const url = 'ws://' + window.location.hostname + API_URL + '/runcommand'
     const socket = new WebSocket(url);
@@ -30,7 +26,7 @@ class Runcommand extends React.Component {
     term.write('$ ');
     socket.addEventListener('message', (response) => {
       console.log(response);
-      response = JSON.parse(response.data).result
+      response = JSON.parse(response.data).result.replaceAll('\n', '\r\n')
       term.write(response + '\r\n');
       term.write('$ ');
     });
@@ -53,18 +49,38 @@ class Runcommand extends React.Component {
           currentInput = '';
           break;
         case 'Backspace':
+          if(currentInput.length > 0) {
+            term.write('\b \b');
+          }
           currentInput = currentInput.substring(0, currentInput.length - 1);
-          console.log(currentInput);
-          term.write('\b \b');
           break;
         case 'ArrowUp':
-          if(historyIndex > 0) {
-            historyIndex--;
+          try {
+            if(historyIndex > 0 && historyIndex <= inputHistory.length) {
+              historyIndex--;
+              for(let i = 0; i < currentInput.length; i++){
+                term.write('\b \b');
+              }
+              currentInput = inputHistory[historyIndex];
+              term.write(currentInput);
+            }
+          } catch(e) {
             currentInput = inputHistory[historyIndex];
-            term.write('');
-            term.write('\r');
-            term.write('$ ')
             term.write(currentInput);
+          }
+          break;
+        case 'ArrowDown':
+          try {
+            if(historyIndex >= 0 && historyIndex < inputHistory.length) {
+              historyIndex++;
+              for(let i = 0; i < currentInput.length; i++){
+                term.write('\b \b');
+              }
+              currentInput = inputHistory[historyIndex];
+              term.write(currentInput);
+            }
+          } catch(e) {
+            currentInput = inputHistory[historyIndex];
           }
           break;
         default:

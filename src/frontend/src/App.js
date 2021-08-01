@@ -7,10 +7,6 @@ import Layout from './components/Layout';
 
 class App extends React.Component {
   
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
 			<>
