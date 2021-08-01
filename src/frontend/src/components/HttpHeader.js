@@ -36,8 +36,8 @@ class HttpHeader extends React.Component {
 
     table.push(<Table striped bordered hover variant="dark" size="sm"><tbody>);
     {
-      Object.keys(result).map(key =>
-        <tr align="left"><td>{key}</td><td>{result[key] == null ? "N/A" : result[key]}</td></tr>
+      Object.keys(result).map(keys =>
+        <tr align="left"><td>{keys}</td><td>{result[keys] == null ? "N/A" : result[keys]}</td></tr>
       )
     }
     table.push(</tbody></Table>);
