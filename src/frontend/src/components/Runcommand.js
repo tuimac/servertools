@@ -4,8 +4,9 @@ import Console from './Console';
 
 class Runcommand extends React.Component {
 
-  handleSubmit = (event) => {
+  handleSubmit(event){
     console.log('hello');
+    console.log(event);
   }
   
   render() {
@@ -30,13 +31,6 @@ class Runcommand extends React.Component {
                 <h3>File Upload</h3>
               </Card.Header>
               <Card.Body>
-                <Form onSubmit={this.handleSubmit}>
-                  <Form.Group>
-                    <Form.Label><h5>This file will upload to '/tmp'</h5></Form.Label>
-                    <Form.File /><br />
-                    <Button variant="dark" type="submit">Upload</Button>
-                  </Form.Group>
-                </Form>
               </Card.Body>
             </Card>
           </Row>
