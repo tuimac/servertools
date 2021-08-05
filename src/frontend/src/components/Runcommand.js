@@ -1,12 +1,25 @@
 import React from 'react';
-import { Card, Col, Container, Row, Form, Button } from 'react-bootstrap';
+import { Card, Col, Container, Row, Button } from 'react-bootstrap';
 import Console from './Console';
+import axios from 'axios';
 
 class Runcommand extends React.Component {
 
   handleSubmit(event){
-    console.log('hello');
-    console.log(event);
+    const url = window.location.origin + '/api/upload';
+    var data = event.target.files[0];
+    const params = new FormData();
+    axios.post(
+      url,
+      params,
+      {
+        headers: {
+          'content-type': 'multipart/form-data'
+        }
+      }
+    ).then((result) => {
+      console.log(result);
+    });
   }
   
   render() {
