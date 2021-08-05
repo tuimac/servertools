@@ -22,4 +22,5 @@ urlpatterns = [
     path("api/host/", include("host.urls")),
     path("api/traceroute/", include("traceroute.urls")),
     path("api/httpreq/", include("httpreq.urls")),
+    path("api/upload/", include("upload.urls"))
 ]

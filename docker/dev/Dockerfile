@@ -36,6 +36,7 @@ cat << "EOF" \n\
                                                             \n\
 EOF' >> /root/.bashrc && \
     cd servertools/src/frontend && \
-    npm install
+    npm install && \
+    mkdir /upload
 
 ENTRYPOINT ["/root/entrypoint.sh"]
