@@ -1,24 +1,37 @@
 import React from 'react';
 import { Card, Col, Container, Row, Button } from 'react-bootstrap';
 import Console from './Console';
-import axios from 'axios';
 
 class Runcommand extends React.Component {
 
-  handleSubmit(event){
+  constructor() {
+    super();
+    this.state = {
+      file: null
+    };
+  }
+
+  handleChengeFile = (event) => {
+    this.state.file = event.target.files[0];
+  }
+
+  handleSubmit = () => {
     const url = window.location.origin + '/api/upload';
-    var data = event.target.files[0];
-    const params = new FormData();
-    axios.post(
-      url,
-      params,
-      {
-        headers: {
-          'content-type': 'multipart/form-data'
-        }
-      }
+    const formData = new FormData();
+    const param = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      },
+      body: formData
+    }
+    formData.append('File', this.state.file);
+    console.log(this.state.file)
+    fetch(url, param
     ).then((result) => {
       console.log(result);
+    }).catch((error) => {
+      console.error(error);
     });
   }
   
@@ -45,8 +58,8 @@ class Runcommand extends React.Component {
               </Card.Header>
               <Card.Body>
                 <h5>This file will upload to '/tmp'.</h5>
-                <input type="file" onClick={this.handleSubmit}/><br/><br/>
-                <Button variant="dark">Upload</Button>
+                <input type="file" onChange={this.handleChengeFile} /><br/><br/>
+                <Button variant="dark" onClick={this.handleSubmit}>Upload</Button>
               </Card.Body>      
             </Card>
           </Row>

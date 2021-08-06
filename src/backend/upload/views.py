@@ -19,5 +19,11 @@ class UploadAPIViews(views.APIView):
             for chunk in file.chunks():
                 f.write(chunk)
             f.close()
+            response = dict
+            response['result'] = 'success'
+            return Response(response)
         except:
             logger.error(traceback.format_exc())
+            response = dict
+            response['result'] = 'failure'
+            return Response(response)
