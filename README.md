@@ -10,12 +10,12 @@ You can track the http accesses to each container or each host Server by this se
 If you want to test the communications through Load Balancer or Ingress, some container deployment services, this application will fit that demand.
 
 ## Functions
-- Runcommand
+- Runcommand<br>
 You can run command through web terminal. This function was implemented by [Xtermjs](https://xtermjs.org/).
 The command send to servertool's container and run within that container.
 (You can't use Vim now...)
 
-- Server Information API
+- Server Information API<br>
 Servertool's landing page provide some information of host server and contaner. This API gather information from EC2 instance so servertool works on only AWS services.
 
 ## Authors
