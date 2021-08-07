@@ -14,16 +14,28 @@ class UploadAPIViews(views.APIView):
     def post(self, request):
         try:
             file = request.FILES['file']
+            logger.info(file)
             path = os.path.join(upload_dir, file.name)
             f = open(path, 'wb')
             for chunk in file.chunks():
                 f.write(chunk)
             f.close()
-            response = dict
+            response = dict()
             response['result'] = 'success'
             return Response(response)
         except:
             logger.error(traceback.format_exc())
-            response = dict
+            response = dict()
+            response['result'] = 'failure'
+            return Response(response)
+
+    def get(self, request, *args, **kwargs):
+        try:
+            response = dict()
+            response['result'] = 'success'
+            return Response(response)
+        except:
+            logger.error(traceback.format_exc())
+            response = dict()
             response['result'] = 'failure'
             return Response(response)

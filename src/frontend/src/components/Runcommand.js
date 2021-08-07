@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Col, Container, Row, Button } from 'react-bootstrap';
 import Console from './Console';
+import axios from 'axios';
 
 class Runcommand extends React.Component {
 
@@ -12,27 +13,28 @@ class Runcommand extends React.Component {
   }
 
   handleChengeFile = (event) => {
-    this.state.file = event.target.files[0];
+    this.setState({
+      file: event.target.files[0]
+    })
   }
 
   handleSubmit = () => {
     const url = window.location.origin + '/api/upload';
     const formData = new FormData();
-    const param = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      },
-      body: formData
-    }
-    formData.append('File', this.state.file);
+    formData.append('file', this.state.file);
     console.log(this.state.file)
-    fetch(url, param
-    ).then((result) => {
-      console.log(result);
-    }).catch((error) => {
-      console.error(error);
-    });
+    axios.post(
+      url,
+      formData,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'Access-Control-Allow-Origin': '*'
+        }
+      }
+    ).then(res => {
+      console.log(res); 
+    })
   }
   
   render() {

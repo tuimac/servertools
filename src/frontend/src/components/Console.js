@@ -18,15 +18,21 @@ class Console extends React.Component {
       foreground: '#F5F8FA',
       cursorStyle: 'block',
       fontSize: 16,
-      cursorBlink: true
+      cursorBlink: true,
+      RendererType: 'canvas',
     });
     
     term.open(this.terminal);
     term.write('$ ');
     socket.addEventListener('message', (response) => {
       console.log(response);
-      response = JSON.parse(response.data).result.replaceAll('\n', '\r\n')
-      term.write(response + '\r\n');
+      response = JSON.parse(response.data).result
+      if(response !== false) {
+        response = response.replaceAll('\n', '\r\n')
+        term.write(response + '\r\n');
+      } else {
+        term.write('\r\n');
+      }
       term.write('$ ');
     });
 
