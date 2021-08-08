@@ -18,6 +18,13 @@ The command send to servertool's container and run within that container.
 - Server Information API<br>
 Servertool's landing page provide some information of host server and contaner. This API gather information from EC2 instance so servertool works on only AWS services.
 
+## Technology
+- Frontend<br>
+Framework is React with bootstrap UI.
+
+- Backend
+Using Django Rest Framework. Runcommand use Websocket so /runcommand use [Django Channels](https://channels.readthedocs.io/en/stable/).
+
 ## Authors
 
 * **Kento Kashiwagi** - [tuimac](https://github.com/tuimac)
