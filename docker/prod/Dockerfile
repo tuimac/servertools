@@ -11,9 +11,10 @@ ADD entrypoint.sh /root/entrypoint.sh
 
 RUN apk update && \
     apk upgrade && \
-    apk add --no-cache bash git python3 py3-pip nodejs npm nginx cargo rust gcc openssl-dev build-base libffi-dev redis && \
+    apk add --no-cache bash git python3 python3-dev py3-pip nodejs npm nginx cargo rust gcc openssl-dev build-base libffi-dev redis && \
     pip3 install -r requirements.txt && \
-    cd servertools/src/frontend && \
+    git clone https://github.com/tuimac/servertools && \
+    cd /root/servertools/src/frontend && \
     npm install bootstrap react-bootstrap react-router-dom && \
     npm run-script build && \
     mkdir /upload
