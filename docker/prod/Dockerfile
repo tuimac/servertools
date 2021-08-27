@@ -4,6 +4,7 @@ WORKDIR /root
 
 expose 80
 expose 8000
+EXPOSE 6379
 
 ADD requirements.txt /root/requirements.txt
 ADD nginx.conf /etc/nginx/nginx.conf
@@ -15,7 +16,7 @@ RUN apk update && \
     pip3 install -r requirements.txt && \
     git clone https://github.com/tuimac/servertools && \
     cd /root/servertools/src/frontend && \
-    npm install bootstrap react-bootstrap react-router-dom && \
+    npm install && \
     npm run-script build && \
     mkdir /upload
 
